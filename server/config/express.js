@@ -8,7 +8,7 @@ var express = require('express'),
     STATIC_DIRECTORY = '/public',
     secretPassPhrase = 'SequGcJeUcAXR7SymwXMmW6kDr8aYH86jCrwE8UdC7n';
 
-module.exports = function(app, config) {
+module.exports = function (app, config) {
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
     app.use(cookieParser(secretPassPhrase));

@@ -10,7 +10,7 @@ var clients = {},
 function getToken(payload) {
     // The payload will be sent inside the token.
     // It can be username, id etc.
-    var token = jwt.sign(payload, secret, { expiresInMinutes: 60*5});
+    var token = jwt.sign(payload, secret, {expiresInMinutes: 60 * 5});
     return token;
 }
 
@@ -23,7 +23,7 @@ function init(server) {
         handshake: true
     }));
 
-    sio.sockets.on('connection', function(socket) {
+    sio.sockets.on('connection', function (socket) {
         var username = socket.decoded_token.username;
         console.log(username, 'Connected...');
         clients[username] = socket;
@@ -34,7 +34,7 @@ function init(server) {
     });
 
     if (!process.env.NODE_ENV) {
-        setInterval(function() {
+        setInterval(function () {
             sio.sockets.emit('time', Date());
         }, 2000);
     }

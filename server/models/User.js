@@ -3,10 +3,10 @@ var mongoose = require('mongoose'),
     config = require('../config/config');
 
 var userSchema = mongoose.Schema({
-    username: { type: String, require: '{PATH} is required', unique: true },
-    firstName: { type: String, require: '{PATH} is required'},
-    lastName: { type: String, require: '{PATH} is required'},
-    registerDate: { type: Date, default: Date.now},
+    username: {type: String, require: '{PATH} is required', unique: true},
+    firstName: {type: String, require: '{PATH} is required'},
+    lastName: {type: String, require: '{PATH} is required'},
+    registerDate: {type: Date, default: Date.now},
     salt: String,
     hashPass: String,
     roles: [String],
@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.method({
-    authenticate: function(password) {
+    authenticate: function (password) {
         return encryption.generateHashedPassword(this.salt, password) === this.hashPass;
     },
     isInRole: function (role) {
@@ -24,6 +24,7 @@ userSchema.method({
 
 var User = mongoose.model('User', userSchema);
 
+// TODO: add default avatar (path) from "public/common/img" folder
 function userSeed(salt, hashedPass) {
     // Admin
     User.create({
@@ -46,10 +47,10 @@ function userSeed(salt, hashedPass) {
     });
 }
 
-module.exports.seedInitialUsers = function() {
+module.exports.seedInitialUsers = function () {
     User
         .find({})
-        .exec(function(error, collection) {
+        .exec(function (error, collection) {
             if (error) {
                 console.log('Cannot find users: ' + error);
                 return;

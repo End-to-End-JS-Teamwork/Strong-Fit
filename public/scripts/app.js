@@ -1,7 +1,7 @@
 'use strict';
 
 var strongFitApp = angular
-    .module('strongFitApp', ['ngResource', 'ngRoute', 'ngCookies', 'ngAnimate'])
+    .module('strongFitApp', ['ngResource', 'ngRoute', 'ngCookies'])
     .config(function($routeProvider) {
         var routeUserCheck = {
             adminRole: {

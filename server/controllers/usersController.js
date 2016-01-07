@@ -109,7 +109,7 @@ module.exports = {
     },
     getById: function (req, res, next) {
         User
-            .findOne({ _id: req.params.id })
+            .findOne({_id: req.params.id})
             .select('_id username firstName lastName imageUrl roles ')
             .exec(function (err, item) {
                 if (err) {
@@ -124,7 +124,7 @@ module.exports = {
     deleteUser: function (req, res, next) {
         // Allowed for admins
         User
-            .findOne({ _id: req.params.id })
+            .findOne({_id: req.params.id})
             .remove()
             .exec(function (err) {
                 if (err) {

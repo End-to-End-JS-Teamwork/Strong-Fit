@@ -5,8 +5,8 @@ var passport = require('passport'),
     viewModels = require('../view-models');
 
 module.exports = {
-    login: function(req, res, next) {
-        var auth = passport.authenticate('local', function(err, user) {
+    login: function (req, res, next) {
+        var auth = passport.authenticate('local', function (err, user) {
             if (err) {
                 return next(err);
             }
@@ -17,7 +17,7 @@ module.exports = {
                 });
             }
 
-            req.logIn(user, function(err) {
+            req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
                 }
@@ -36,11 +36,11 @@ module.exports = {
 
         auth(req, res, next);
     },
-    logout: function(req, res, next) {
+    logout: function (req, res, next) {
         req.logout();
         res.end();
     },
-    isAuthenticated: function(req, res, next) {
+    isAuthenticated: function (req, res, next) {
         if (!req.isAuthenticated()) {
             res.status(401);
             res.end();
@@ -48,10 +48,10 @@ module.exports = {
             next();
         }
     },
-    isInRole: function(roles) {
-        return function(req, res, next) {
+    isInRole: function (roles) {
+        return function (req, res, next) {
             if (roles instanceof Array) {
-                roles.forEach(function(role) {
+                roles.forEach(function (role) {
                     if (req.isAuthenticated() && req.user.roles.indexOf(role) > -1) {
                         next();
                     }

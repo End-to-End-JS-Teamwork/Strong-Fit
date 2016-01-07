@@ -5,13 +5,13 @@ var passport = require('passport'),
     model = require('../models/index'), // Loads directory first to prevent crashing of passport module
     User = require('mongoose').model('User');
 
-module.exports = function() {
-    passport.use(new LocalPassport(function(username, password, done) {
+module.exports = function () {
+    passport.use(new LocalPassport(function (username, password, done) {
         User
             .findOne({
                 username: username
             })
-            .exec(function(err, user) {
+            .exec(function (err, user) {
                 if (err) {
                     console.log('Error loading user: ' + err);
                     return;
@@ -25,18 +25,18 @@ module.exports = function() {
             });
     }));
 
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function (user, done) {
         if (user) {
             return done(null, user._id);
         }
     });
 
-    passport.deserializeUser(function(id, done) {
+    passport.deserializeUser(function (id, done) {
         User
             .findOne({
                 _id: id
             })
-            .exec(function(err, user) {
+            .exec(function (err, user) {
                 if (err) {
                     console.log('Error loading user: ' + err);
                     return;
