@@ -1,26 +1,21 @@
 extends includes/layout
 block main-content
+
+
     header.nav.navbar-default.navbar-fixed-top
         .container
             .navbar-header
                 a.navbar-brand(href="#/") StrongFit Forum
-            button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
+
             .navbar-collapse.collapse
                 ul.nav.navbar-nav
                     li
                         a(href="#/") Home
-
                 ul.nav.navbar-nav.navbar-right
-                    li
-                        a(href="register") Register
-                    li
-                        a(href="#/") Login
+                    li(ng-view="'login'")
+    section
+        div(ng-view)
 
-    div(ng-view class="slide-down")
     footer.nav.navbar-fixed-bottom
         hr
         p.text-center

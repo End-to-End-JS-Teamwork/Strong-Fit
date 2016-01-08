@@ -15,10 +15,18 @@ var strongFitApp = angular
                 }
             }
         };
+
+        $routeProvider
+            .when('/',{
+                templateUrl: '/partials/identity/login',
+                controller: 'HomeController'
+            })
     })
     .value('toastr', toastr)
     .constant('appName', 'StrongFit')
     .constant('serverPath', 'http://localhost:3210');
+
+
 
 strongFitApp.run(function($rootScope, $location) {
     // When failed to change route -> change location path
