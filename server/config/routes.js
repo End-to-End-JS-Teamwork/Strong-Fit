@@ -23,6 +23,12 @@ module.exports = function (app) {
         res.render('partials/main/unauthorized');
     });
 
+    // Route to registration
+    app.post('/register', controllers.users.createUser)
+   /* app.post('/partials/identity/register', function (req, res) {
+        res.render('/partials/identity/register');
+    });*/
+
     // Default
     app.get('/', function (req, res) {
         res.render('index', {currentUser: req.user});
