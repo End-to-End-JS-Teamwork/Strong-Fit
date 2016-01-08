@@ -1,0 +1,27 @@
+#profile-container.container(ng-controller='ProfileController', ng-cloak='')
+    .row
+        .col-md-8.col-md-offset-2.text-center
+            h2 {{ username }}
+    .row
+        .col-md-8.col-md-offset-2.text-center
+            img#profile-img(src='{{ profilePicture }}')
+    .row
+        .col-md-8.col-md-offset-2
+            .panel.panel-default
+                .panel-heading
+                    strong Add profile picture
+                .panel-body
+                    .input-group.image-preview
+                        input.form-control.image-preview-filename(placeholder='', type='text', disabled='disabled')
+                        .input-group-btn
+                            button.btn.btn-default.image-preview-clear(type='button', style='display:none;')
+                                span.glyphicon.glyphicon-remove
+                                |  Clear
+                            .btn.image-preview-input
+                                span.glyphicon.glyphicon-folder-open
+                                span.image-preview-input-title Browse
+                                input(type='file', accept='image/png, image/jpeg, image/gif', name='input-file-preview')
+                            button.btn.btn-labeled.image-preview-input(type='button')
+                                span.btn-label.upload-icon
+                                    i.glyphicon.glyphicon-upload
+                                span.image-preview-input-title Upload
