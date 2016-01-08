@@ -1,0 +1,19 @@
+.container.center-block(ng-cloak='')
+    br
+    .row
+        #register-user-container.col-xs-12.col-sm-12.col-md-6.col-md-offset-3.well.well-lg(ng-controller='SignUpController')
+            legend
+                i.glyphicon.glyphicon-globe
+                |  Register
+            form.form(role='form', name='newUserForm')
+                .row
+                    .col-xs-6.col-md-6
+                        input#sign-up-firstname.form-control(name='firstname', placeholder='First Name', type='text', required='', autofocus='', ng-model='firstname')
+                    .col-xs-6.col-md-6
+                        input#sign-up-lastname.form-control(name='lastname', placeholder='Last Name', type='text', required='', ng-model='lastname')
+                input#sign-up-email.form-control(name='email', placeholder='E-mail', type='email', required='', ng-model='email')
+                input#sign-up-username.form-control(name='username', placeholder='Username', type='text', required='', ng-model='username')
+                input.form-control(name='password', placeholder='New Password', type='password', required='', ng-model='password')
+                br
+                button.btn.btn-lg.btn-primary.btn-block(type='button', ng-disabled='newUserForm.$pristine || newUserForm.$invalid', ng-click='signUp(firstname, lastname, username, password, email)')
+                    | Sign up
