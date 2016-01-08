@@ -1,10 +1,26 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>Must implement home page here</h1>
-    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    <div class="row">
-      <panel>Start forum</panel>
+    <h1>Telerik Academy Courses</h1>
+    <h2>Best trainings in rhe world</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Featured</div>
+        <div ng-include="'partials/main/featured-course'" class="panel-body"></div>
+      </div>
     </div>
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">New</div>
+        <div ng-include="'partials/main/new-course'" class="panel-body"></div>
+      </div>
+    </div>
+    <!--button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")-->
+    <!--    span.sr-only Toggle navigation-->
+    <!--    span.icon-bar-->
+    <!--    span.icon-bar-->
+    <!--    span.icon-bar-->
   </div>
 </div>

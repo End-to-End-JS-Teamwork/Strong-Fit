@@ -18,9 +18,14 @@ var strongFitApp = angular
 
         $routeProvider
             .when('/',{
-                templateUrl: '/partials/identity/login',
+                templateUrl: '/partials/main/home',
                 controller: 'HomeController'
             })
+            .when('/',{
+                templateUrl: '/partials/identity/login',
+                controller: 'LoginController'
+            })
+            .otherwise({redirectTo: '/'});
     })
     .value('toastr', toastr)
     .constant('appName', 'StrongFit')

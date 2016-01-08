@@ -11,8 +11,8 @@ block main-content
                 ul.nav.navbar-nav
                     li
                         a(href="#/") Home
-                ul.nav.navbar-nav.navbar-right
-                    li(ng-view="'login'")
+                div(ng-include="'partials/identity/login'")
+
     section
         div(ng-view)
 
