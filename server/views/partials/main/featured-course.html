@@ -1,2 +1,2 @@
 
-<h2>test</h2>
+<div ng-repeat="course in vm.courses | filter: {featured: true}">{{ course.name }}</div>

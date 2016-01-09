@@ -17,12 +17,12 @@ var strongFitApp = angular
         };
 
         $routeProvider
-            .when('/',{
-                templateUrl: '/partials/main/home',
+            .when('#/',{
+                templateUrl: 'partials/main/home',
                 controller: 'HomeController'
             })
-            .when('/',{
-                templateUrl: '/partials/identity/login',
+            .when('#/',{
+                templateUrl: 'partials/identity/login',
                 controller: 'LoginController'
             })
             .otherwise({redirectTo: '/'});
