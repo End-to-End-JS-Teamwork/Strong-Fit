@@ -5,7 +5,7 @@ var fs = require('fs'),
     encryption = require('../utilities/encryption'),
     User = require('mongoose').model('User'),
     DEFAULT_UPLOAD_DIRECTORY = './public/images',
-    DEFAULT_AVATAR = 'default-avatar.jpg';
+    DEFAULT_AVATAR = 'img/default-avatar.jpg';
 
 var getImageGuid = function (image) {
     var guidIndex = image.path.lastIndexOf('/');
@@ -110,15 +110,29 @@ module.exports = {
     getById: function (req, res, next) {
         User
             .findOne({_id: req.params.id})
-            .select('_id username firstName lastName imageUrl roles ')
-            .exec(function (err, item) {
+            .select('_id username firstName lastName imageUrl registerDate roles comments articles')
+            .exec(function (err, user) {
                 if (err) {
                     res.status(400).send('User could not be found: ' + err);
                     console.log('User could not be found: ' + err);
                     return;
                 }
 
-                res.send(item);
+                res.send(user);
+            });
+    },
+    getByUsername: function (req, res, next) {
+        User
+            .findOne({username: req.params.username})
+            .select('_id username firstName lastName imageUrl registerDate roles comments articles')
+            .exec(function (err, user) {
+                if (err) {
+                    res.status(400).send('User could not be found: ' + err);
+                    console.log('User could not be found: ' + err);
+                    return;
+                }
+
+                res.send(user);
             });
     },
     deleteUser: function (req, res, next) {

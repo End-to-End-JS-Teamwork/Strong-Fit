@@ -1,4 +1,14 @@
 body {
-    margin-top: 70px;
+    margin-top: 60px;
     padding: 0;
+}
+
+footer {
+    height: 40px;
+    background-color: #DD4814 !important;
+}
+
+#copy-name {
+    color: white;
+    font-size: 13px;
 }

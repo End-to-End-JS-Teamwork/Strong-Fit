@@ -3,14 +3,44 @@ var mongoose = require('mongoose'),
     config = require('../config/config');
 
 var userSchema = mongoose.Schema({
-    username: {type: String, require: '{PATH} is required', unique: true},
-    firstName: {type: String, require: '{PATH} is required'},
-    lastName: {type: String, require: '{PATH} is required'},
+    username: {
+        type: String,
+        unique: true,
+        validate: function (input) {
+            return /[0-9A-z]/.test(input);
+        },
+        require: '{PATH} is required',
+        message: '{PATH} is not a valid username'
+    },
+    firstName: {
+        type: String,
+        validate: function (input) {
+            return /[A-z]/.test(input);
+        },
+        require: '{PATH} is required',
+        message: '{PATH} your name contains illegal characters'
+    },
+    lastName: {
+        type: String,
+        validate: function (input) {
+            return /[A-z]/.test(input);
+        },
+        require: '{PATH} is required',
+        message: '{PATH} your name contains illegal characters'
+    },
     registerDate: {type: Date, default: Date.now},
     salt: String,
     hashPass: String,
     roles: [String],
-    imageUrl: String
+    imageUrl: String,
+    comments: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Comment'
+    }],
+    articles: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Article'
+    }]
 });
 
 userSchema.method({
@@ -24,7 +54,7 @@ userSchema.method({
 
 var User = mongoose.model('User', userSchema);
 
-// TODO: add default avatar (path) from "public/common/img" folder
+// TODO: add initial comments and articles to users
 function userSeed(salt, hashedPass) {
     // Admin
     User.create({
@@ -33,7 +63,10 @@ function userSeed(salt, hashedPass) {
         lastName: 'Hristov',
         salt: salt,
         hashPass: hashedPass,
-        roles: [config.identity.roles.admin]
+        roles: [config.identity.roles.admin],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
     });
 
     // User
@@ -43,7 +76,10 @@ function userSeed(salt, hashedPass) {
         lastName: 'Georgieva',
         salt: salt,
         hashPass: hashedPass,
-        roles: [config.identity.roles.user]
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
     });
 }
 
