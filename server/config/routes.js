@@ -32,6 +32,6 @@ module.exports = function (app) {
     // This routes will be updated later
     // All final routes must be placed in "Final routes" section
     app.get('/partials/:partialArea/:partialName', function (req, res) {
-        res.render('../../server/partials/' + req.params.partialArea + '/' + req.params.partialName)
+        res.render('../../server/views/partials/' + req.params.partialArea + '/' + req.params.partialName)
     });
 };
