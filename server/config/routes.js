@@ -25,7 +25,14 @@ module.exports = function (app) {
 
     // Default
     app.get('/', function (req, res) {
-        res.render('index', {currentUser: req.user});
+        controllers.categories.get()
+            .then(function (categories) {
+                res.render('index', {currentUser: req.user,
+                    categories: categories});
+            }, function (error) {
+                res.status(400);
+                res.send('Error getting categories: ' + error);
+            });
     });
 
     // ------- Tests routes -------

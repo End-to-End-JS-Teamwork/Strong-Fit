@@ -19,7 +19,25 @@ var categorySchema = mongoose.Schema({
 var Category = mongoose.model('Category', categorySchema);
 
 function categorySeed() {
-    // TODO: add initial categories
+    if(Category.collection.length < 3) {
+        //empty categories
+        Category.create({
+            name: "Category1",
+            subcategories: []
+        });
+
+        Category.create({
+            name: "Category2",
+            subcategories: []
+        });
+
+        Category.create({
+            name: "Category3",
+            subcategories: []
+        });
+    }
+
+    console.log("Seeded 3 categories with no subcategories...");
 }
 
 module.exports.seedInitialCategories = function() {
