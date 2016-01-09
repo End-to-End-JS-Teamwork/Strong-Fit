@@ -4,11 +4,29 @@ html
         title StrongFit Forum
         link(rel="stylesheet" href="/common/styles/bootstrap.min.css")
         link(rel="stylesheet" href="/lib/toastr/toastr.min.css")
-        link(rel="stylesheet" href="/common/styles/index.css")
         link(rel="stylesheet" href="/css/site.css")
-    body(ng-app="strongFitApp")
+    body
+        header.nav.navbar-default.navbar-fixed-top
+            .container
+                .navbar-header
+                    a.navbar-brand(href="/") StrongFit Forum
+                button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href="/") Home
+                        li
+                            a(href="/forum") Forum
+                    include currentUser
         block main-content
 
+        footer.panel-footer.navbar-fixed-bottom
+            p.text-center
+                a(href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name") &copy; StrongFit
         include scripts
-        include currentUser
+        //include currentUser
 

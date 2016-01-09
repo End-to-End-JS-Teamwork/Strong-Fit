@@ -1,3 +1,10 @@
 if !!currentUser
     script.
         window.bootstrappedUserObject = !{JSON.stringify(currentUser)}
+
+.navbar-right
+    form.navbar-form
+        .form-group
+            input.form-control(type="text", placeholder="User")
+            input.form-control(type="password", placeholder="Password")
+        button.btn.btn-primary Login
