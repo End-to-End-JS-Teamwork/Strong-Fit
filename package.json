@@ -4,7 +4,9 @@
   "description": "Teamwork assignment for End-to-End JavaScript Application course at Telerik Academy",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "author": "Dimitar Stoyanov",
   "license": "MIT",
