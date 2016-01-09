@@ -11,6 +11,10 @@ var commentSchema = mongoose.Schema({
         message: '{PATH} content of message should be between 10 and 1500 symbols'
     },
     createdOn: {type: Date, default: Date.now},
+    topic: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Topic'
+    },
     createdBy: {
         type: mongoose.Schema.ObjectId,
         ref: 'User'
@@ -18,11 +22,57 @@ var commentSchema = mongoose.Schema({
 });
 
 var Comment = mongoose.model('Comment', commentSchema);
+var Topic = mongoose.model('Topic');
+var User = mongoose.model('User');
+
+// Test comments (will be changed)
+var comments = ['Comment #1', 'Comment #2'];
 
 function commentSeed() {
-    // TODO: add initial comments
+    Comment
+        .find({})
+        .exec(function (err, collection) {
+            if (err) {
+                console.log('Cannot find comments...');
+                return;
+            }
+
+            User
+                .find({})
+                .exec(function (err, users) {
+                    if (err) {
+                        console.log('Seeding comments error: ' + err);
+                        return;
+                    }
+
+                    Topic
+                        .find({})
+                        .exec(function (err, topics) {
+                            if (err) {
+                                console.log('Seeding comments error: ' + err);
+                                return;
+                            }
+
+                            if (collection.length === 0) {
+                                comments.forEach(function (commentContent) {
+                                    users.forEach(function (user) {
+                                        topics.forEach(function (topic) {
+                                            Comment.create({
+                                                content: commentContent,
+                                                topic: topic,
+                                                createdBy: user
+                                            });
+                                        });
+                                    });
+                                });
+
+                                console.log('Comments added to database...');
+                            }
+                        });
+                });
+        });
 }
 
 module.exports.seedInitialComments = function() {
-    commentSeed();
+    setTimeout(commentSeed, 1700);
 };

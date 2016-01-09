@@ -18,10 +18,28 @@ var categorySchema = mongoose.Schema({
 
 var Category = mongoose.model('Category', categorySchema);
 
+// Test categories (will be changed)
+var categories = ['Test Category #1', 'Test Category #2', 'Test Category #3', 'Test Category #4', 'Test Category #5'];
+
 function categorySeed() {
-    // TODO: add initial categories
+    Category
+        .find({})
+        .exec(function (err, collection) {
+            if (err) {
+                console.log('Cannot find categories...');
+                return;
+            }
+
+            if (collection.length === 0) {
+                categories.forEach(function (categoryName) {
+                    Category.create({name: categoryName, subcategories: []});
+                });
+
+                console.log('Categories added to database...');
+            }
+        });
 }
 
 module.exports.seedInitialCategories = function() {
-    categorySeed();
+    setTimeout(categorySeed, 1200);
 };

@@ -64,7 +64,9 @@ function userSeed(salt, hashedPass) {
         salt: salt,
         hashPass: hashedPass,
         roles: [config.identity.roles.admin],
-        imageUrl: 'img/default-avatar.jpg'
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
     });
 
     // User
@@ -75,7 +77,9 @@ function userSeed(salt, hashedPass) {
         salt: salt,
         hashPass: hashedPass,
         roles: [config.identity.roles.user],
-        imageUrl: 'img/default-avatar.jpg'
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
     });
 }
 

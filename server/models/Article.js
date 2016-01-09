@@ -28,11 +28,56 @@ var articleSchema = mongoose.Schema({
 });
 
 var Article = mongoose.model('Article', articleSchema);
+var User = mongoose.model('User');
+
+
+// Test articles (will be changed)
+var articles = [
+    {
+        title: 'Test Article #1',
+        description: 'Test Description #1 Test Description #1 Test Description #1 Test Description #1 Test Description #1 Test Description #1'
+    },
+    {
+        title: 'Test Article #2',
+        description: 'Test Description #2 Test Description #2 Test Description #2 Test Description #2 Test Description #2 Test Description #2'
+    }
+];
 
 function articleSeed() {
-    // TODO: add initial articles
+    Article
+        .find({})
+        .exec(function (err, collection) {
+            if (err) {
+                console.log('Cannot find articles...');
+                return;
+            }
+
+            User
+                .find({})
+                .exec(function (err, users) {
+                    if (err) {
+                        console.log('Seeding articles error: ' + err);
+                        return;
+                    }
+
+                    if (collection.length === 0) {
+                        articles.forEach(function (article) {
+                            users.forEach(function (user) {
+                                Article.create({
+                                    title: article.title,
+                                    description: article.description,
+                                    createdBy: user
+                                });
+
+                            });
+                        });
+
+                        console.log('Articles added to database...');
+                    }
+                });
+        });
 }
 
-module.exports.seedInitialArticles = function() {
-    articleSeed();
+module.exports.seedInitialArticles = function () {
+    setTimeout(articleSeed, 1200);
 };
