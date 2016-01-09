@@ -12,17 +12,18 @@ if !!currentUser
                 // i.glyphicon.glyphicon-globe
                 |  Register
 
-            form.form(role='form', name='newUserForm' )
+            form.form(role='form', name='newUserForm', method='POST', action='/register' novalidate )
                 .row
                     .col-xs-6.col-md-6
                         input#sign-up-firstname.form-control(name='firstname', placeholder='First Name', type='text', required='', autofocus='')
                     .col-xs-6.col-md-6
-                        input#sign-up-lastname.form-control(name='lastname', placeholder='Last Name', type='text', required='', ng-model='lastname')
-                input#sign-up-email.form-control(name='email', placeholder='E-mail', type='email', required='', ng-model='email')
-                input#sign-up-username.form-control(name='username', placeholder='Username', type='text', required='', ng-model='username')
-                input.form-control(name='password', placeholder='New Password', type='password', required='', ng-model='password')
+                        input#sign-up-lastname.form-control(name='lastname', placeholder='Last Name', type='text', required='')
+                input#sign-up-email.form-control(name='email', placeholder='E-mail', type='email', required='')
+                input#sign-up-username.form-control(name='username', placeholder='Username', type='text', required='')
+                input.form-control(name='password', placeholder='Password', type='password', required='')
+                input.form-control(name='confirm-password', placeholder='Confirm Password', type='password', required='')
                 br
-                button.btn.btn-lg.btn-primary.btn-block(type='button', ng-disabled='newUserForm.$pristine || newUserForm.$invalid', ng-click='signUp(firstname, lastname, username, password, email)')
+                button.btn.btn-lg.btn-primary.btn-block(type='button')
                     | Sign up
 
 

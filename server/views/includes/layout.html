@@ -1,26 +1,104 @@
 <!DOCTYPE html>
 <html>
-<head><title>StrongFit Forum</title>
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <head>
+    <title>StrongFit Forum</title>
+    <link rel="stylesheet" href="/common/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/lib/toastr/toastr.min.css">
-    <link rel="stylesheet" href="/lib/ngDialog/css/ngDialog.min.css">
-    <link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-default.min.css">
-    <link rel="stylesheet" href="/lib/textAngular/dist/textAngular.min.css">
-    <link rel="stylesheet" href="/lib/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/lib/ngAnimate/css/ng-animation.css">
-    <link rel="stylesheet" href="/styles/index.css">
-</head>
-<body ng-app="strongFitApp">
-<script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="/lib/angular/angular.min.js"></script>
-<script type="text/javascript" src="/lib/angular-resource/angular-resource.min.js"></script>
-<script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
-<script type="text/javascript" src="/lib/angular-cookies/angular-cookies.min.js"></script>
-<script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
-<script type="text/javascript" src="/lib/ngDialog/js/ngDialog.min.js"></script>
-<script type="text/javascript" src="/lib/textAngular/dist/textAngular.min.js"></script>
-<script type="text/javascript"
-        src="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.2/textAngular-sanitize.min.js"></script>
-<script type="text/javascript" src="/lib/toastr/toastr.min.js"></script>
-</body>
+    <link rel="stylesheet" href="/css/site.css">
+  </head>
+  <body>
+    <header class="nav navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit Forum</a></div>
+        <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/forum">Forum</a></li>
+          </ul>
+          <div class="navbar-right">
+            <form class="navbar-form">
+              <div class="form-group">
+                <input type="text" placeholder="User" class="form-control">
+                <input type="password" placeholder="Password" class="form-control">
+              </div>
+              <button class="btn btn-primary">Login</button>
+            </form>
+          </div>
+          <!-- - local_data = JSON.stringify(User)-->
+          <div class="container center-block"><br>
+            <div class="row">
+              <div id="register-user-container" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
+                <legend>
+                  <!-- i.glyphicon.glyphicon-globe--> Register
+                </legend>
+                <form role="form" name="newUserForm" class="form">
+                  <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                      <input id="sign-up-firstname" name="firstname" placeholder="First Name" type="text" required="" autofocus="" class="form-control">
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                      <input id="sign-up-lastname" name="lastname" placeholder="Last Name" type="text" required="" ng-model="lastname" class="form-control">
+                    </div>
+                  </div>
+                  <input id="sign-up-email" name="email" placeholder="E-mail" type="email" required="" ng-model="email" class="form-control">
+                  <input id="sign-up-username" name="username" placeholder="Username" type="text" required="" ng-model="username" class="form-control">
+                  <input name="password" placeholder="New Password" type="password" required="" ng-model="password" class="form-control"><br>
+                  <button type="button" ng-disabled="newUserForm.$pristine || newUserForm.$invalid" ng-click="signUp(firstname, lastname, username, password, email)" class="btn btn-lg btn-primary btn-block">Sign up</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!--.login.well-->
+          <!--    h1  Welcome aboard!-->
+          <!--    hr-->
+          <!--    form(id='register-form', method='POST', action='/register' novalidate)-->
+          <!--        .form-group-->
+          <!--            label(for='display') Display Name-->
+          <!--            input(type='text', name='display', class='form-control',-->
+          <!--            id='display', placeholder='Enter display name')-->
+          <!--        .form-group-->
+          <!--            label(for='username') Username-->
+          <!--            input(type='text', name='username', class='form-control',-->
+          <!--            id='username', placeholder='Enter username')-->
+          <!--        .form-group-->
+          <!--            label(for='password') Password-->
+          <!--            input(type='password', name='password', class='form-control',-->
+          <!--            id='password', placeholder='Enter password')-->
+          <!--        .form-group-->
+          <!--            label(for='confirm-password') Confirm Password-->
+          <!--            input(type='password', name='confirm-password', class='form-control',-->
+          <!--            id='confirm-password', placeholder='Confirm password')-->
+          <!--        .form-group-->
+          <!--            label(for='email') Email-->
+          <!--            input(type='email', name='email', class='form-control',-->
+          <!--            id='email', placeholder='Enter email')-->
+          <!--        .form-group-->
+          <!--            label(for='confirm-email') Confirm Email-->
+          <!--            input(type='email', name='confirm-email', class='form-control',-->
+          <!--            id='confirm-email', placeholder='Confirm email')-->
+          <!--        .form-group-->
+          <!--            button.btn.btn-default Register-->
+          <!--            a(href="login") Or Login-->
+        </div>
+      </div>
+    </header>
+    <footer class="panel-footer navbar-fixed-bottom">
+      <p class="text-center"><a href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name">&copy; StrongFit</a></p>
+    </footer>
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/lib/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="/lib/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/services/account/auth.js"></script>
+    <!-- script(type="text/javascript" src="/scripts/services/account/fb-auth.js")-->
+    <script type="text/javascript" src="/scripts/services/account/identity.js"></script>
+    <script type="text/javascript" src="/scripts/services/account/user-resource.js"></script>
+    <script type="text/javascript" src="/server/utilities/notifier.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/home-controller.js"></script>
+    <!--include currentUser-->
+  </body>
 </html>

@@ -1,22 +1,57 @@
 
-<div ng-cloak="" class="container center-block"><br/>
+<!-- - local_data = JSON.stringify(User)-->
+<div class="container center-block"><br/>
   <div class="row">
-    <div id="register-user-container" ng-controller="SignUpController" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
-      <legend><i class="glyphicon glyphicon-globe"></i> Register</legend>
-      <form role="form" name="newUserForm" class="form">
+    <div id="register-user-container" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
+      <legend>
+        <!-- i.glyphicon.glyphicon-globe--> Register
+      </legend>
+      <form role="form" name="newUserForm" method="POST" action="/register" novalidate="novalidate" class="form">
         <div class="row">
           <div class="col-xs-6 col-md-6">
-            <input id="sign-up-firstname" name="firstname" placeholder="First Name" type="text" required="" autofocus="" ng-model="firstname" class="form-control"/>
+            <input id="sign-up-firstname" name="firstname" placeholder="First Name" type="text" required="" autofocus="" class="form-control"/>
           </div>
           <div class="col-xs-6 col-md-6">
-            <input id="sign-up-lastname" name="lastname" placeholder="Last Name" type="text" required="" ng-model="lastname" class="form-control"/>
+            <input id="sign-up-lastname" name="lastname" placeholder="Last Name" type="text" required="" class="form-control"/>
           </div>
         </div>
-        <input id="sign-up-email" name="email" placeholder="E-mail" type="email" required="" ng-model="email" class="form-control"/>
-        <input id="sign-up-username" name="username" placeholder="Username" type="text" required="" ng-model="username" class="form-control"/>
-        <input name="password" placeholder="New Password" type="password" required="" ng-model="password" class="form-control"/><br/>
-        <button type="button" ng-disabled="newUserForm.$pristine || newUserForm.$invalid" ng-click="signUp(firstname, lastname, username, password, email)" class="btn btn-lg btn-primary btn-block">Sign up</button>
+        <input id="sign-up-email" name="email" placeholder="E-mail" type="email" required="" class="form-control"/>
+        <input id="sign-up-username" name="username" placeholder="Username" type="text" required="" class="form-control"/>
+        <input name="password" placeholder="Password" type="password" required="" class="form-control"/>
+        <input name="confirm-password" placeholder="Confirm Password" type="password" required="" class="form-control"/><br/>
+        <button type="button" class="btn btn-lg btn-primary btn-block">Sign up</button>
       </form>
     </div>
   </div>
 </div>
+<!--.login.well-->
+<!--    h1  Welcome aboard!-->
+<!--    hr-->
+<!--    form(id='register-form', method='POST', action='/register' novalidate)-->
+<!--        .form-group-->
+<!--            label(for='display') Display Name-->
+<!--            input(type='text', name='display', class='form-control',-->
+<!--            id='display', placeholder='Enter display name')-->
+<!--        .form-group-->
+<!--            label(for='username') Username-->
+<!--            input(type='text', name='username', class='form-control',-->
+<!--            id='username', placeholder='Enter username')-->
+<!--        .form-group-->
+<!--            label(for='password') Password-->
+<!--            input(type='password', name='password', class='form-control',-->
+<!--            id='password', placeholder='Enter password')-->
+<!--        .form-group-->
+<!--            label(for='confirm-password') Confirm Password-->
+<!--            input(type='password', name='confirm-password', class='form-control',-->
+<!--            id='confirm-password', placeholder='Confirm password')-->
+<!--        .form-group-->
+<!--            label(for='email') Email-->
+<!--            input(type='email', name='email', class='form-control',-->
+<!--            id='email', placeholder='Enter email')-->
+<!--        .form-group-->
+<!--            label(for='confirm-email') Confirm Email-->
+<!--            input(type='email', name='confirm-email', class='form-control',-->
+<!--            id='confirm-email', placeholder='Confirm email')-->
+<!--        .form-group-->
+<!--            button.btn.btn-default Register-->
+<!--            a(href="login") Or Login-->
