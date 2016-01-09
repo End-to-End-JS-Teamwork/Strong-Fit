@@ -21,12 +21,13 @@ html
                             a(href="/") Home
                         li
                             a(href="/forum") Forum
-
+                        li
+                            include currentUser
         block main-content
 
         footer.panel-footer.navbar-fixed-bottom
             p.text-center
                 a(href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name") &copy; StrongFit
         include scripts
-        include currentUser
+        //include currentUser
 
