@@ -5,7 +5,7 @@ var fs = require('fs'),
     encryption = require('../utilities/encryption'),
     User = require('mongoose').model('User'),
     DEFAULT_UPLOAD_DIRECTORY = './public/images',
-    DEFAULT_AVATAR = 'default-avatar.jpg';
+    DEFAULT_AVATAR = 'img/default-avatar.jpg';
 
 var getImageGuid = function (image) {
     var guidIndex = image.path.lastIndexOf('/');

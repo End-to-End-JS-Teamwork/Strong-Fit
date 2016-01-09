@@ -22,4 +22,9 @@ module.exports = function (config) {
 
     // Seed initial data
     models.User.seedInitialUsers();
+    models.Category.seedInitialCategories();
+    models.Subcategory.seedInitialSubcategories();
+    models.Topic.seedInitialTopics();
+    models.Comment.seedInitialComments();
+    models.Article.seedInitialArticles();
 };
