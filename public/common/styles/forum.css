@@ -232,5 +232,13 @@ a.btn.btn-primary {
     color: white;
 }
 
-.subcategoryName {
+.users-table {
+    height: 50px;
+    width: 50px;
+    padding: 4px;
+}
+
+.pageButtons {
+    margin-left: 2px;
+    margin-right: 2px;
 }

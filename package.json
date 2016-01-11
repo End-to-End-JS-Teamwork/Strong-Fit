@@ -4,7 +4,7 @@
   "description": "Teamwork assignment for End-to-End JavaScript Application course at Telerik Academy",
   "main": "server.js",
   "scripts": {
-    "start" : "nodemon server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install"
   },
@@ -15,11 +15,14 @@
     "cookie-parser": "^1.4.0",
     "crypto": "0.0.3",
     "express": "^4.13.3",
+    "express-paginate": "^0.1.0",
     "express-session": "^1.12.1",
+    "font-awesome": "^4.5.0",
     "formidable": "^1.0.17",
     "jade": "^1.11.0",
     "jsonwebtoken": "^5.5.4",
     "mongoose": "^4.3.4",
+    "mongoose-paginate": "^5.0.0",
     "mongoose-paginator": "^0.2.5",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

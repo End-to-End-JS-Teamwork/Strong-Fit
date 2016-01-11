@@ -5,6 +5,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
+    paginate = require('express-paginate'),
     STATIC_DIRECTORY = '/public',
     secretPassPhrase = 'SequGcJeUcAXR7SymwXMmW6kDr8aYH86jCrwE8UdC7n';
 
@@ -12,6 +13,7 @@ module.exports = function (app, config) {
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
     app.use(cookieParser(secretPassPhrase));
+    app.use(paginate.middleware(10, 50));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true

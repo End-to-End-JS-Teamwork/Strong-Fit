@@ -26,6 +26,9 @@ module.exports = function (app) {
     // Forum
     app.get('/forum', controllers.forumHome.getForumMainData);
 
+    // Admin: To enable admin add -> auth.isInRole('admin')
+    app.get('/admin/users',  controllers.users.getAllUsers);
+
     // Default
     app.get('/', function (req, res) {
         res.render('index', {currentUser: req.user});

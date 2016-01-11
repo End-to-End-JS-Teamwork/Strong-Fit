@@ -5,7 +5,9 @@ var fs = require('fs'),
     encryption = require('../utilities/encryption'),
     User = require('mongoose').model('User'),
     DEFAULT_UPLOAD_DIRECTORY = './public/images',
-    DEFAULT_AVATAR = 'img/default-avatar.jpg';
+    DEFAULT_AVATAR = 'img/default-avatar.jpg',
+    paginate = require('express-paginate'),
+    viewModels = require('../view-models');
 
 var getImageGuid = function (image) {
     var guidIndex = image.path.lastIndexOf('/');
@@ -149,5 +151,63 @@ module.exports = {
 
                 res.status(200).send("User deleted successfully");
             });
+    },
+    getAllUsers: function (req, res, next) {
+        User.find({}).exec(function (err, collection) {
+            User.paginate({}, { page: req.query.page, limit: req.query.limit }, function(err, users, pageCount, itemCount) {
+                if (err) {
+                    console.log('Cannot find users...');
+                    return;
+                }
+
+                var usersCollection = viewModels.UserPaginateViewModel.getUserPaginateViewModel(collection);
+
+                if (req.query.sort === 'username') {
+                    usersCollection.sort(function (firstUser, secondUser) {
+                        var firstUsername = firstUser.username.toLowerCase(),
+                            secondUsername = secondUser.username.toLowerCase();
+
+                        if (firstUsername < secondUsername) {
+                            return -1;
+                        }
+
+                        if (firstUsername > secondUsername) {
+                            return 1;
+                        }
+
+                        return 0;
+                    })
+                } else if (req.query.sort === 'lastName') {
+                    usersCollection.sort(function (firstUser, secondUser) {
+                        var firstName = firstUser.lastName.toLowerCase(),
+                            secondName = secondUser.lastName.toLowerCase();
+
+                        if (firstName < secondName) {
+                            return -1;
+                        }
+
+                        if (firstName > secondName) {
+                            return 1;
+                        }
+
+                        return 0;
+                    })
+                }
+
+                var page = req.query.page;
+                var limit = 4;
+                var userCollection = [];
+                for (var i = ((page - 1) * limit), j = i; i < j + limit; i++) {
+                    userCollection.push(usersCollection[i]);
+                }
+
+                res.render('partials/admin/users', {
+                    users: userCollection,
+                    pageCount: pageCount,
+                    itemCount: itemCount,
+                    pages: paginate.getArrayPages(req)(3, usersCollection.length / limit, req.query.page)
+                });
+            });
+        });
     }
 };

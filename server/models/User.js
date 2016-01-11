@@ -1,8 +1,9 @@
 var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate'),
     encryption = require('../utilities/encryption'),
     config = require('../config/config');
 
-var userSchema = mongoose.Schema({
+var userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true,
@@ -42,6 +43,7 @@ var userSchema = mongoose.Schema({
         ref: 'Article'
     }]
 });
+userSchema.plugin(mongoosePaginate);
 
 userSchema.method({
     authenticate: function (password) {
@@ -51,6 +53,7 @@ userSchema.method({
         return this.roles.indexOf(role) > -1
     }
 });
+
 
 var User = mongoose.model('User', userSchema);
 
@@ -74,6 +77,147 @@ function userSeed(salt, hashedPass) {
         username: 'albena',
         firstName: 'Albena',
         lastName: 'Georgieva',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'dsd',
+        firstName: 'Dimitar',
+        lastName: 'Malinov',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'pesho',
+        firstName: 'Pesho',
+        lastName: 'Georgiev',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'zTer',
+        firstName: 'Zdravko',
+        lastName: 'Stoichev',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+    // User
+    User.create({
+        username: 'd7sd',
+        firstName: 'Dimitar',
+        lastName: 'Malinov',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'pe4sho',
+        firstName: 'Pesho',
+        lastName: 'Georgiev',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'z1Ter',
+        firstName: 'Zdravko',
+        lastName: 'Stoichev',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+    // User
+    User.create({
+        username: 'dsd9',
+        firstName: 'Dimitar',
+        lastName: 'Malinov',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'pesh9o',
+        firstName: 'Pesho',
+        lastName: 'Georgiev',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'zT9er',
+        firstName: 'Zdravko',
+        lastName: 'Stoichev',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'vaseto',
+        firstName: 'Vasil',
+        lastName: 'Petkov',
+        salt: salt,
+        hashPass: hashedPass,
+        roles: [config.identity.roles.user],
+        imageUrl: 'img/default-avatar.jpg',
+        comments: [],
+        articles: []
+    });
+
+    // User
+    User.create({
+        username: 'mariaaa',
+        firstName: 'Mara',
+        lastName: 'Stoicheva',
         salt: salt,
         hashPass: hashedPass,
         roles: [config.identity.roles.user],

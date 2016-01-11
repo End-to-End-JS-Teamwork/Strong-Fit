@@ -60,7 +60,7 @@ module.exports = {
                 next();
             } else {
                 res.status(403);
-                res.end();
+                res.render('partials/main/unauthorized');
             }
         }
     }
