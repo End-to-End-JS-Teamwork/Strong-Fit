@@ -11,6 +11,7 @@ var commentSchema = mongoose.Schema({
         message: '{PATH} content of message should be between 10 and 1500 symbols'
     },
     createdOn: {type: Date, default: Date.now},
+    subcategory: {type: String},
     topic: {
         type: mongoose.Schema.ObjectId,
         ref: 'Topic'

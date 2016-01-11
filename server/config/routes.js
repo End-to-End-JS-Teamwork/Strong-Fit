@@ -23,6 +23,9 @@ module.exports = function (app) {
         res.render('partials/main/unauthorized');
     });
 
+    // Forum
+    app.get('/forum', controllers.forumHome.getForumMainData);
+
     // Default
     app.get('/', function (req, res) {
         res.render('index', {currentUser: req.user});

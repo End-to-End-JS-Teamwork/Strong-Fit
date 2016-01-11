@@ -20,10 +20,7 @@ var articleSchema = mongoose.Schema({
         message: '{PATH} description should be between 100 and 3000 symbols'
     },
     createdOn: {type: Date, default: Date.now},
-    createdBy: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    },
+    createdBy: {type: String},
     imageUrl: {type: String}
 });
 
@@ -52,29 +49,7 @@ function articleSeed() {
                 return;
             }
 
-            User
-                .find({})
-                .exec(function (err, users) {
-                    if (err) {
-                        console.log('Seeding articles error: ' + err);
-                        return;
-                    }
-
-                    if (collection.length === 0) {
-                        articles.forEach(function (article) {
-                            users.forEach(function (user) {
-                                Article.create({
-                                    title: article.title,
-                                    description: article.description,
-                                    createdBy: user
-                                });
-
-                            });
-                        });
-
-                        console.log('Articles added to database...');
-                    }
-                });
+            
         });
 }
 
