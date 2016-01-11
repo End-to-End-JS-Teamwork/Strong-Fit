@@ -4,62 +4,144 @@ var subcategorySchema = mongoose.Schema({
     name: {
         type: String,
         validate: function (input) {
-            return (input.length > 5 && input.length <= 30)
+            return (input.length > 5 && input.length <= 50)
         },
         required: true,
         require: '{PATH} is required',
         message: '{PATH} name of the subcategory should be between 5 and 30 symbols'
     },
-    category: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Category'
-    },
-    topic: [{
+    category: {type: String},
+    topics: [{
         type: mongoose.Schema.ObjectId,
         ref: 'Topic'
     }]
 });
 
 var Subcategory = mongoose.model('Subcategory', subcategorySchema);
-var Category = mongoose.model('Category');
-
-// Test subcategories (will be changed)
-var subcategories = ['Test Subcategory #1', 'Test Subcategory #2', 'Test Subcategory #3'];
 
 function subcategorySeed() {
     Subcategory
         .find({})
-        .exec(function (err, collection) {
+        .exec(function (err, subcategories) {
             if (err) {
                 console.log('Cannot find subcategories...');
                 return;
             }
 
-            Category
-                .find({})
-                .exec(function (err, categories) {
-                    if (err) {
-                        console.log('Seeding subcategories error: ' + err);
-                        return;
-                    }
-
-                    if (collection.length === 0) {
-                        categories.forEach(function (category) {
-                            subcategories.forEach(function (item) {
-                                Subcategory.create({
-                                    name: item,
-                                    category: category,
-                                    topic: []
-                                });
-                            });
-                        });
-
-                        console.log('Subcategories added to database...');
-                    }
+            if (subcategories.length === 0) {
+                Subcategory.create({
+                    name: 'Полезни връзки във форума',
+                    category: 'СтронгФит',
+                    topics: []
                 });
+
+                Subcategory.create({
+                    name: 'Често задавани въпроси',
+                    category: 'СтронгФит',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Общи теми',
+                    category: 'СтронгФит',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Комплекси и методики',
+                    category: 'CrossFit',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Групови тренировки',
+                    category: 'CrossFit',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Общи теми за CrossFit',
+                    category: 'CrossFit',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Хранителни режими за покачване на тегло',
+                    category: 'Хранене',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Хранителни режими за отслабване',
+                    category: 'Хранене',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Храни и хранителни продукти',
+                    category: 'Хранене',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Рецепти',
+                    category: 'Хранене',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Общи теми за хранене',
+                    category: 'Хранене',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Хранителни добавки за покачване на тегло',
+                    category: 'Хранителни добавки',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Хранителни добавки за изгаряне на мазнини',
+                    category: 'Хранителни добавки',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Хранителни добавки за сила и издръжливост',
+                    category: 'Хранителни добавки',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Продуктови ревюта',
+                    category: 'Хранителни добавки',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Общи теми за хранителни добавки',
+                    category: 'Хранителни добавки',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Извън спортния център',
+                    category: 'Други дискусии',
+                    topics: []
+                });
+
+                Subcategory.create({
+                    name: 'Да си поговорим',
+                    category: 'Други дискусии',
+                    topics: []
+                });
+
+                console.log('Subcategories added to database...');
+            }
         });
 }
 
-module.exports.seedInitialSubcategories = function() {
+module.exports.seedInitialSubcategories = function () {
     setTimeout(subcategorySeed, 1300);
 };
