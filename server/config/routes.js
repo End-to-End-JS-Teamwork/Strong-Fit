@@ -41,7 +41,7 @@ module.exports = function (app) {
     app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
 
     // Admin: To enable admin add -> auth.isInRole('admin')
-    app.get('/admin/users',  controllers.users.getAllUsers);
+    app.get('/admin/users', auth.isInRole('admin'), controllers.users.getAllUsers);
 
     // Default
     app.get('/', function (req, res) {
