@@ -26,7 +26,7 @@ module.exports = function (app) {
     // Forum
     app.get('/forum', controllers.forumHome.getForumMainData);
 
-    app.get('/forum/:category/:subcategory', controllers.subcategory.getTopics);
+    app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
 
     // Admin: To enable admin add -> auth.isInRole('admin')
     app.get('/admin/users',  controllers.users.getAllUsers);
