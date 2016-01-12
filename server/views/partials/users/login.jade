@@ -5,20 +5,23 @@ block main-content
         script.
             window.bootstrappedUserObject = !{JSON.stringify(currentUser)}
 
-
     .container.center-block
         br
+        .row
+            #register-user-container.col-xs-12.col-sm-12.col-md-6.col-md-offset-3.well.well-lg
 
+                legend
+                    h1 Login
 
-        legend
-            h1 Login
+                form.form(role='form', name='newUserForm', method='POST', action='/login' novalidate )
+                    .row
 
-            form(method='post', action='/login')
-
-                        label(for="username") Username
-                        input.form-control(type="text", placeholder="User" name="username")#username
-                        br
-                        label(for="password") Password
-                        input.form-control(type="password", placeholder="Password" name="password")#password
-                        br
-                        button.btn.btn-lg.btn-primary.btn-block(type="submit" value="Login") Login
+                    br
+                    label(for='username') Username
+                    input#username.form-control(name='username', placeholder='Username', type='text', required='')
+                    br
+                    label(for='password') Password
+                    input#password.form-control(name='password', placeholder='Password', type='password', required='')
+                    br
+                    button.btn.btn-lg.btn-primary.btn-block(type="submit" value="Login")
+                        | Login

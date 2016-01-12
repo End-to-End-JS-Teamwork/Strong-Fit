@@ -28,16 +28,21 @@
       </div>
     </header>
     <div class="container center-block"><br>
-      <legend>
-        <h1>Login</h1>
-        <form method="post" action="/login">
-          <label for="username">Username</label>
-          <input type="text" placeholder="User" name="username" id="username" class="form-control"><br>
-          <label for="password">Password</label>
-          <input type="password" placeholder="Password" name="password" id="password" class="form-control"><br>
-          <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Login</button>
-        </form>
-      </legend>
+      <div class="row">
+        <div id="register-user-container" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
+          <legend>
+            <h1>Login</h1>
+          </legend>
+          <form role="form" name="newUserForm" method="POST" action="/login" novalidate class="form">
+            <div class="row"></div><br>
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="Username" type="text" required="" class="form-control"><br>
+            <label for="password">Password</label>
+            <input id="password" name="password" placeholder="Password" type="password" required="" class="form-control"><br>
+            <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Login</button>
+          </form>
+        </div>
+      </div>
     </div>
     <footer class="panel-footer navbar-fixed-bottom">
       <p class="text-center"><a href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name">&copy; StrongFit</a></p>

@@ -27,7 +27,6 @@ module.exports = {
         res.render(PARTIAL_NAME + CONTROLLER_NAME + '/register');
     },
     postRegister: function (req, res, next) {
-        console.log('pesho');
         var newUserData = {
             username: req.body.username,
             firstName: req.body.firstName,
