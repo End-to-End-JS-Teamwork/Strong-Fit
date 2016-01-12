@@ -38,7 +38,11 @@ function subcategorySeed() {
                 Subcategory.create({
                     name: 'Често задавани въпроси',
                     category: 'СтронгФит',
-                    topics: []
+                    topics: [
+                        'Topic 1',
+                        'Topic 2',
+                        'Topic 3'
+                    ]
                 });
 
                 Subcategory.create({

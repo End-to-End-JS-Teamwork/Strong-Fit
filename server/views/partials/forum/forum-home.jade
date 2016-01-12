@@ -7,7 +7,7 @@ block main-content
                     td.thead(colspan='5')
                         div
                             strong
-                                a(href="/")
+                                a(href="/forum/#{item.name}")
                                     = item.name
                             br
                             .smalltext
@@ -33,7 +33,7 @@ block main-content
 
                             td.trow1.text-left.subcategoryName
                                 strong
-                                    a(href='/')
+                                    a(href="/forum/#{item.name}/#{subc.name}")
                                         = subc.name
                                 .smalltext
                                     | Модериран от:
@@ -51,7 +51,7 @@ block main-content
 
                             td.trow2.text-left.subcategoryName
                                 strong
-                                    a(href='/')
+                                    a(href="/forum/#{item.name}/#{subc.name}")
                                         = subc.name
                                 .smalltext
                                     | Модериран от:
