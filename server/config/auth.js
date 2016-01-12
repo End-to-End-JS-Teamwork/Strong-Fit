@@ -26,11 +26,14 @@ module.exports = {
                 user.token = socket.getToken({
                     username: user.username
                 });
-                res.send({
-                    success: true,
-                    user: viewModels.UserViewModel.getUserViewModel(user),
-                    token: user.token
-                });
+
+
+                res.redirect('/');
+                //res.send({
+                //    success: true,
+                //    user: viewModels.UserViewModel.getUserViewModel(user),
+                //    token: user.token
+                //});
             });
         });
 
@@ -38,6 +41,7 @@ module.exports = {
     },
     logout: function (req, res, next) {
         req.logout();
+        res.redirect('/');
         res.end();
     },
     isAuthenticated: function (req, res, next) {

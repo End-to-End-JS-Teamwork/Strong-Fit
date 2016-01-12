@@ -7,8 +7,12 @@ var auth = require('./auth'),
 module.exports = function (app) {
     // ------- Final routes -------
     // Users
+    app.get('/register', controllers.users.getRegister);
+    app.post('/register', controllers.users.postRegister);
+
+    app.get('/login', controllers.users.getLogin);
     app.post('/login', auth.login);
-    app.post('/logout', auth.logout);
+    app.get('/logout', auth.logout);
 
     // Favicon
     app.get('/favicon.ico', function (req, res) {

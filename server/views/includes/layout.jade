@@ -24,7 +24,18 @@ html
                             a(href="/") Home
                         li
                             a(href="/forum") Forum
-                        include currentUser
+                     ul.nav.navbar-nav.navbar-right
+                         if (currentUser)
+                             li
+                                 a(href="/profile") #{currentUser.username}'s profile
+                             li
+                                 a(href='/logout') Logout
+                         else
+                             li
+                                 a(href="/register") Register
+                             li
+                                 a(href="/login") Login
+                        // include ../users/login
 
         block main-content
 

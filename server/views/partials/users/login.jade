@@ -1,0 +1,24 @@
+extends ../../includes/layout
+block main-content
+
+    if !!currentUser
+        script.
+            window.bootstrappedUserObject = !{JSON.stringify(currentUser)}
+
+
+    .container.center-block
+        br
+
+
+        legend
+            h1 Login
+
+            form(method='post', action='/login')
+
+                        label(for="username") Username
+                        input.form-control(type="text", placeholder="User" name="username")#username
+                        br
+                        label(for="password") Password
+                        input.form-control(type="password", placeholder="Password" name="password")#password
+                        br
+                        button.btn.btn-lg.btn-primary.btn-block(type="submit" value="Login") Login

@@ -2,8 +2,8 @@
 
 // Export all controllers here
 
-var usersController = require('../controllers/usersController'),
-    forumHomeController = require('../controllers/forumHomeController'),
+var forumHomeController = require('../controllers/forumHomeController'),
+    usersController = require('../controllers/usersController'),
     subcategoryController = require('../controllers/subcategoryController');
 
 module.exports = {
