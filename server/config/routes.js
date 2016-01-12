@@ -5,6 +5,14 @@ var auth = require('./auth'),
     controllers = require('../controllers');
 
 module.exports = function (app) {
+    function currentUserMiddleware(req, res, next){
+        console.log(req.user);
+        req.currentUser = req.user;
+        next();
+    };
+
+    app.get('/*', currentUserMiddleware);
+
     // ------- Final routes -------
     // Users
     app.get('/register', controllers.users.getRegister);

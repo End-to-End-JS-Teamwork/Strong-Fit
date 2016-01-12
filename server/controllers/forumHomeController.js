@@ -35,7 +35,7 @@ module.exports = {
                                     .ForumHomeViewModel
                                     .getForumHomeViewModel(categories, subcategories, comments);
 
-                                res.render('partials/forum/forum-home', {result: viewModelResult});
+                                res.render('partials/forum/forum-home', {currentUser:req.user,result: viewModelResult}); //TODO check where is login or no
                             });
                     });
             });

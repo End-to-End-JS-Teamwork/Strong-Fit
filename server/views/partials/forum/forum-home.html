@@ -24,10 +24,70 @@
             <li><a href="/login">Login</a></li>
           </ul>
           <!-- include ../users/login-->
-          
         </div>
       </div>
     </header>
+    <!--each item in result.categories-->
+    <!--    table.col-lg-offset-1.col-lg-10-->
+    <!--        thead.text-left-->
+    <!--            tr-->
+    <!--                td.thead(colspan='5')-->
+    <!--                    div-->
+    <!--                        strong-->
+    <!--                            a(href="/forum/#{item.name}")-->
+    <!--                                = item.name-->
+    <!--                        br-->
+    <!--                        .smalltext-->
+    <!--        tbody-->
+    <!--            tr-->
+    <!--                td.tcat.text-left(colspan='2')-->
+    <!--                    span.smalltext-->
+    <!--                        strong Форум-->
+    <!---->
+    <!--                td.tcat(width='85', align='center', style='white-space: nowrap')-->
+    <!--                    span.smalltext-->
+    <!--                        strong Теми-->
+    <!---->
+    <!--                td.tcat(width='85', align='center', style='white-space: nowrap')-->
+    <!--                    span.smalltext-->
+    <!--                        strong Коментари-->
+    <!--        each subc in result.subcategories-->
+    <!--            if subc.category === item.name-->
+    <!--                if i % 2 === 0-->
+    <!--                    tr-->
+    <!--                        td.trow1(align='center', width='1')-->
+    <!--                            img(src="/common/img/forum-main-icon.png")-->
+    <!---->
+    <!--                        td.trow1.text-left.subcategoryName-->
+    <!--                            strong-->
+    <!--                                a(href="/forum/#{item.name}/#{subc.name}")-->
+    <!--                                    = subc.name-->
+    <!--                            .smalltext-->
+    <!--                                | Модериран от:-->
+    <!--                                a(href='/')  Moderators-->
+    <!--                        td.trow1(align='center', style='white-space: nowrap')-->
+    <!--                            = subc.topics.length-->
+    <!---->
+    <!--                        td.trow1(align='center', style='white-space: nowrap')-->
+    <!--                            = result.comments.length-->
+    <!--                    <!-- = result.comments[subc.name].length -->-->
+    <!--                else-->
+    <!--                    tr-->
+    <!--                        td.trow2(align='center', width='1')-->
+    <!--                            img(src="/common/img/forum-main-icon.png")-->
+    <!---->
+    <!--                        td.trow2.text-left.subcategoryName-->
+    <!--                            strong-->
+    <!--                                a(href="/forum/#{item.name}/#{subc.name}")-->
+    <!--                                    = subc.name-->
+    <!--                            .smalltext-->
+    <!--                                | Модериран от:-->
+    <!--                                a(href='/')  Moderators-->
+    <!--                        td.trow2(align='center', style='white-space: nowrap')-->
+    <!--                            = subc.topics.length-->
+    <!---->
+    <!--                        td.trow2(align='center', style='white-space: nowrap')-->
+    <!--                            = result.comments.length-->
     <footer class="panel-footer navbar-fixed-bottom">
       <p class="text-center"><a href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name">&copy; StrongFit</a></p>
     </footer>
