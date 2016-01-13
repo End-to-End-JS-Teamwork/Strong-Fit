@@ -62,6 +62,7 @@ module.exports = {
                             reason: err.toString()
                         });
                     } else {
+                        req.session.error = 'Success: Register successful';
                         res.redirect('/');
                     }
                 });
@@ -167,8 +168,9 @@ module.exports = {
                     return;
                 }
 
+                req.session.error = 'Success: User deleted successfully | User: ' + req.body.username;
+                res.redirect('/admin/users');
                 res.status(200);
-                req.toastr.success('User deleted successfully | User: ' + req.body.username);
             });
     },
     getAllUsers: function (req, res, next) {

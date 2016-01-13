@@ -38,9 +38,11 @@ html
                                  a(href="/login") Login
 
 
-        .container
+        .container#hideMe
             if (errorMessage)
                 .alert.alert-danger #{errorMessage}
+            if (successMessage)
+                .alert.alert-success #{successMessage}
 
         block main-content
 
