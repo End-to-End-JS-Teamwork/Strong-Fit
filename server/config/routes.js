@@ -31,6 +31,7 @@ module.exports = function (app) {
 
     // Forum
     app.get('/forum', controllers.forumHome.getForumMainData);
+    app.get('/forum/articles/:id', controllers.article.getArticle);
     app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
     app.get('/forum/topics');
     app.get('/forum/comments');

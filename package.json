@@ -24,6 +24,7 @@
     "jade": "^1.11.0",
     "jquery": "^2.2.0",
     "jsonwebtoken": "^5.5.4",
+    "moment": "^2.11.1",
     "mongoose": "^4.3.4",
     "mongoose-paginate": "^5.0.0",
     "mongoose-paginator": "^0.2.5",
