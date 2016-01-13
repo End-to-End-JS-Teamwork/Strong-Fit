@@ -12,6 +12,10 @@ block main-content
                             a(href=paginate.href({sort: 'username'})) Сортирай по потребителско име
                             |  |
                             a(href=paginate.href({sort: 'lastName'})) Сортирай по последно име
+                            |  |
+                            form#deleteUser.text-right(role='form', name='deleteUserForm', method='POST', action='/delete/user' novalidate )
+                                    input#username(name='username', placeholder='Потребителско име', type='text', required='')
+                                    button.btn.btn-md.btn-success(type="submit" value="Delete") Изтрий
                         br
                         .smalltext
 
@@ -67,7 +71,7 @@ block main-content
 
                         td.trow2(align='center', style='white-space: nowrap')
                             = item.registerDate
-    row
+    .row
         .col-lg-offset-1.col-lg-10
             if paginate.hasPreviousPages || paginate.hasNextPages(10)
                 .navigation.well-sm#pagination.col-lg-4

@@ -1,5 +1,11 @@
 extends ../../includes/layout
 block main-content
+    .row
+        .col-lg-10.text-right.col-lg-offset-1
+            .btn.btn-success
+                a.topics-comments-button(href="/forum/topics") Теми
+            .btn.btn-success(style="margin-left: 5px;")
+                a.topics-comments-button(href="/forum/comments") Коментари
     each item in result.categories
         table.col-lg-offset-1.col-lg-10
             thead.text-left

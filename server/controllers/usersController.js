@@ -158,7 +158,7 @@ module.exports = {
     deleteUser: function (req, res, next) {
         // Allowed for admins
         User
-            .findOne({_id: req.params.id})
+            .findOne({username: req.body.username})
             .remove()
             .exec(function (err) {
                 if (err) {
@@ -167,7 +167,8 @@ module.exports = {
                     return;
                 }
 
-                res.status(200).send("User deleted successfully");
+                res.status(200);
+                req.toastr.success('User deleted successfully | User: ' + req.body.username);
             });
     },
     getAllUsers: function (req, res, next) {
