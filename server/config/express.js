@@ -1,11 +1,13 @@
 'use strict';
 
 var express = require('express'),
+    flash = require('connect-flash'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
     paginate = require('express-paginate'),
+    toastr = require('express-toastr'),
     STATIC_DIRECTORY = '/public',
     secretPassPhrase = 'SequGcJeUcAXR7SymwXMmW6kDr8aYH86jCrwE8UdC7n';
 
@@ -23,6 +25,8 @@ module.exports = function (app, config) {
         saveUninitialized: true,
         resave: true
     }));
+    app.use(flash());
+    app.use(toastr());
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + STATIC_DIRECTORY));

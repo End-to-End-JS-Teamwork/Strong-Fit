@@ -22,6 +22,8 @@ module.exports = function (app) {
     app.post('/login', auth.login);
     app.get('/logout', auth.logout);
 
+    app.post('/delete/user', controllers.users.deleteUser);
+
     // Favicon
     app.get('/favicon.ico', function (req, res) {
         res.sendFile(path.resolve(__dirname + '/../../favicon.ico'))
