@@ -28,7 +28,6 @@ module.exports = function (app) {
     app.get('/favicon.ico', function (req, res) {
         res.sendFile(path.resolve(__dirname + '/../../favicon.ico'))
     });
-
     // Admin: To enable admin add -> auth.isInRole('admin')
     app.get('/admin/administration', auth.isInRole('admin'), function (req, res) {
         res.render('partials/admin/administration');

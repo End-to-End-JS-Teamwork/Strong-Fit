@@ -1,6 +1,8 @@
 var Article = require('mongoose').model('Article'),
     paginate = require('express-paginate'),
-    viewModels = require('../view-models');
+    viewModels = require('../view-models'),
+    moment = require('moment');
+    moment.locale('bg');
 
 module.exports = {
     getCreateArticle: function (req, res, next) {
@@ -75,6 +77,24 @@ module.exports = {
                     itemCount: itemCount,
                     pages: paginate.getArrayPages(req)(5, articleViewModel.length / limit, req.query.page)
                 });
+            });
+        });
+    },
+    getArticle: function (req, res) {
+        console.log(decodeURIComponent(req.params.articleName));
+        Article.findOne({_id: req.params.id}, function (err, article) {
+            if (err) {
+                console.log(err);
+            }
+
+            res.render('partials/forum/article', {
+                article: {
+                    title: article.title,
+                    createdOn: moment(article.createdOn).fromNow(),
+                    description: article.description,
+                    imageUrl: article.imageUrl,
+                    createdBy: article.createdBy
+                }
             });
         });
     }
