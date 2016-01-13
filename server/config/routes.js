@@ -20,9 +20,9 @@ module.exports = function (app) {
 
     app.get('/login', controllers.users.getLogin);
     app.post('/login', auth.login);
-    app.get('/logout', auth.logout);
+    app.get('/logout', auth.isAuthenticated, auth.logout);
 
-    app.post('/delete/user', controllers.users.deleteUser);
+    app.post('/delete/user', auth.isAuthenticated, controllers.users.deleteUser);
 
     // Favicon
     app.get('/favicon.ico', function (req, res) {
