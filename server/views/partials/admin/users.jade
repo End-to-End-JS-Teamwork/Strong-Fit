@@ -1,91 +1,99 @@
 extends ../../includes/layout
 block main-content
-    table.col-lg-offset-1.col-lg-10
-        thead.text-left
-            tr
-                td.thead(colspan='5')
-                    div
-                        strong
-                            a(href="/")
-                                | Потребители
-                            |  |
-                            a(href=paginate.href({sort: 'username'})) Сортирай по потребителско име
-                            |  |
-                            a(href=paginate.href({sort: 'lastName'})) Сортирай по последно име
-                            |  |
-                            form#deleteUser.text-right(role='form', name='deleteUserForm', method='POST', action='/delete/user' novalidate )
-                                    input#username(name='username', placeholder='Потребителско име', type='text', required='')
-                                    button.btn.btn-md.btn-success(type="submit" value="Delete") Изтрий
-                        br
-                        .smalltext
-
-        tbody
-            tr
-                td.tcat.text-left(colspan='2')
-                    span.smalltext
-                        strong Потребителско име
-
-                td.tcat(width='85', align='center', style='white-space: nowrap')
-                    span.smalltext
-                        strong Име
-
-                td.tcat(width='85', align='center', style='white-space: nowrap')
-                    span.smalltext
-                        strong Фамилия
-                td.tcat(width='85', align='center', style='white-space: nowrap')
-                    span.smalltext
-                        strong Регистриран
-
-            each item, i in users
-                if i % 2 === 0
-                    tr
-                        td.trow1(align='center', width='1')
-                            img.users-table(src="/common/img/default-avatar.jpg")
-
-                        td.trow1.text-left.subcategoryName
+    .col-lg-5(style="margin-right: -270px;")
+        include administration
+    .col-lg-9
+        h3
+            = sectionHeader
+        hr
+        table.col-lg-offset-1.col-lg-10
+            thead.text-left
+                tr
+                    td.thead(colspan='5')
+                        div
                             strong
-                                a(href='/')
-                                    = item.username
-                        td.trow1(align='center', style='white-space: nowrap')
-                            = item.firstName
+                                a(href="/")
+                                    | Потребители
+                                |  |
+                                a(href=paginate.href({sort: 'username'})) Сортирай по потребителско име
+                                |  |
+                                a(href=paginate.href({sort: 'lastName'})) Сортирай по последно име
+                                |  |
+                                form#deleteUser.text-right(role='form', name='deleteUserForm', method='POST', action='/delete/user' novalidate )
+                                        input#username(name='username', placeholder='Потребителско име', type='text', required='')
+                                        button.btn.btn-sm.btn-success(type="submit" value="Delete")
+                                            .glyphicon.glyphicon-trash
+                                            |  Изтрий
+                            br
+                            .smalltext
 
-                        td.trow1(align='center', style='white-space: nowrap')
-                            = item.lastName
+            tbody
+                tr
+                    td.tcat.text-left(colspan='2')
+                        span.smalltext
+                            strong Потребителско име
 
-                        td.trow1(align='center', style='white-space: nowrap')
-                            = item.registerDate
-                else
-                    tr
-                        td.trow2(align='center', width='1')
-                            img.users-table(src="/common/img/default-avatar.jpg")
+                    td.tcat(width='85', align='center', style='white-space: nowrap')
+                        span.smalltext
+                            strong Име
 
-                        td.trow2.text-left.subcategoryName
-                            strong
-                                a(href='/')
-                                    = item.username
-                        td.trow2(align='center', style='white-space: nowrap')
-                            = item.firstName
+                    td.tcat(width='85', align='center', style='white-space: nowrap')
+                        span.smalltext
+                            strong Фамилия
+                    td.tcat(width='85', align='center', style='white-space: nowrap')
+                        span.smalltext
+                            strong Регистриран
 
-                        td.trow2(align='center', style='white-space: nowrap')
-                            = item.lastName
+                each item, i in users
+                    if i % 2 === 0
+                        tr
+                            td.trow1(align='center', width='1')
+                                img.users-table(src="/common/img/default-avatar.jpg")
 
-                        td.trow2(align='center', style='white-space: nowrap')
-                            = item.registerDate
-    .row
-        .col-lg-offset-1.col-lg-10
-            if paginate.hasPreviousPages || paginate.hasNextPages(10)
-                .navigation.well-sm#pagination.col-lg-4
-                    ul.pager
-                        if paginate.hasPreviousPages
-                            li.previous
-                                a(href=paginate.href(true)).prev
-                                    i.fa.fa-arrow-circle-left
-                                    |  Previous
-                        if pages
-                            each page in pages
-                                a.pageButtons.btn.btn-primary(href=page.url)= page.number
-                        if paginate.hasNextPages(10)
-                            li.next
-                                a(href=paginate.href()).next
-                                    | Next&nbsp;
-                                    i.fa.fa-arrow-circle-right
+                            td.trow1.text-left.subcategoryName
+                                strong
+                                    a(href='/')
+                                        = item.username
+                            td.trow1(align='center', style='white-space: nowrap')
+                                = item.firstName
+
+                            td.trow1(align='center', style='white-space: nowrap')
+                                = item.lastName
+
+                            td.trow1(align='center', style='white-space: nowrap')
+                                = item.registerDate
+                    else
+                        tr
+                            td.trow2(align='center', width='1')
+                                img.users-table(src="/common/img/default-avatar.jpg")
+
+                            td.trow2.text-left.subcategoryName
+                                strong
+                                    a(href='/')
+                                        = item.username
+                            td.trow2(align='center', style='white-space: nowrap')
+                                = item.firstName
+
+                            td.trow2(align='center', style='white-space: nowrap')
+                                = item.lastName
+
+                            td.trow2(align='center', style='white-space: nowrap')
+                                = item.registerDate
+        .row
+            .col-lg-offset-1.col-lg-10
+                if paginate.hasPreviousPages || paginate.hasNextPages(10)
+                    .navigation.well-sm#pagination.col-lg-4
+                        ul.pager
+                            if paginate.hasPreviousPages
+                                li.previous
+                                    a(href=paginate.href(true)).prev
+                                        i.fa.fa-arrow-circle-left
+                                        |  Previous
+                            if pages
+                                each page in pages
+                                    a.pageButtons.btn.btn-primary(href=page.url)= page.number
+                            if paginate.hasNextPages(10)
+                                li.next
+                                    a(href=paginate.href()).next
+                                        | Next&nbsp;
+                                        i.fa.fa-arrow-circle-right

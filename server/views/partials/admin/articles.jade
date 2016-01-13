@@ -1,0 +1,68 @@
+extends ../../includes/layout
+block main-content
+        .col-lg-5(style="margin-right: -270px;")
+            include administration
+        .col-lg-9
+                h3
+                    = sectionHeader
+                hr
+                table.col-lg-offset-1.col-lg-10
+                    thead.text-left
+                        tr
+                            td.thead(colspan='4')
+                                div
+                                    strong
+                                        a(href="/")
+                                            | Статии
+                                        |  |
+                                        a(href=paginate.href({sort: 'title'})) Сортирай по заглавие
+                                        |  |
+                                        a(href=paginate.href({sort: 'date'})) Сортирай по дата
+                                    br
+                                    .smalltext
+
+                    tbody
+                        tr
+                            td.tcat.text-left(colspan='3')
+                                span.smalltext
+                                    strong Заглавие на статията
+
+                            td.tcat(width='85', align='center', style='white-space: nowrap')
+                                span.smalltext
+                                    strong Дата на публикуване
+
+                        each item, i in articles
+                            if i % 2 === 0
+                                tr(style="height: 45px")
+                                    td.trow1.text-left.subcategoryName(colspan='3')
+                                        strong
+                                            a(href='/')
+                                                = item.title
+                                    td.trow1(align='center', style='white-space: nowrap')
+                                        = item.createdOn
+                            else
+                                tr(style="height: 45px")
+                                    td.trow2.text-left.subcategoryName(colspan='3')
+                                        strong
+                                            a(href='/')
+                                                = item.title
+                                    td.trow2(align='center', style='white-space: nowrap')
+                                        = item.createdOn
+                .row
+                    .col-lg-offset-1.col-lg-10
+                        if paginate.hasPreviousPages || paginate.hasNextPages(10)
+                            .navigation.well-sm#pagination.col-lg-4
+                                ul.pager
+                                    if paginate.hasPreviousPages
+                                        li.previous
+                                            a(href=paginate.href(true)).prev
+                                                i.fa.fa-arrow-circle-left
+                                                |  Previous
+                                    if pages
+                                        each page in pages
+                                            a.pageButtons.btn.btn-primary(href=page.url)= page.number
+                                    if paginate.hasNextPages(10)
+                                        li.next
+                                            a(href=paginate.href()).next
+                                                | Next&nbsp;
+                                                i.fa.fa-arrow-circle-right

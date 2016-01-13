@@ -1,0 +1,20 @@
+extends ../../includes/layout
+block main-content
+        .col-lg-5
+            h3
+                i.glyphicon.glyphicon-briefcase
+                |  Admin panel
+            hr
+            ul.nav.nav-stacked
+                li
+                    a(href='#/administration')
+                        i.glyphicon.glyphicon-pencil
+                        |  New Article
+                li
+                    a(href="/admin/users")
+                        i.glyphicon.glyphicon-th-list
+                        |  Users
+                li
+                    a(href="/admin/articles")
+                        i.glyphicon.glyphicon-book
+                        |  Articles

@@ -4,10 +4,14 @@
 
 var forumHomeController = require('../controllers/forumHomeController'),
     usersController = require('../controllers/usersController'),
-    subcategoryController = require('../controllers/subcategoryController');
+    subcategoryController = require('../controllers/subcategoryController'),
+    administrationController = require('../controllers/administrationController'),
+    articleController = require('../controllers/articleController');
 
 module.exports = {
     users: usersController,
     forumHome: forumHomeController,
-    subcategories: subcategoryController
+    subcategories: subcategoryController,
+    administration: administrationController,
+    article: articleController
 };

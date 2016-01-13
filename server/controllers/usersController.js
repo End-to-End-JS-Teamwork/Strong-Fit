@@ -227,6 +227,7 @@ module.exports = {
 
                 res.render('partials/admin/users', {
                     users: userCollection,
+                    sectionHeader: 'Users',
                     pageCount: pageCount,
                     itemCount: itemCount,
                     pages: paginate.getArrayPages(req)(3, usersCollection.length / limit, req.query.page)

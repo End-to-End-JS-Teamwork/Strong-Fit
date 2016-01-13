@@ -30,7 +30,7 @@ module.exports = function (app, config) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + STATIC_DIRECTORY));
-    app.use(function(req, res, next) {
+    app.use(function (req, res, next) {
         if (req.session.error) {
             var msg = req.session.error,
                 index = msg.indexOf('Success: ');
