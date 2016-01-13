@@ -31,7 +31,7 @@ module.exports = {
             username: req.body.username,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            password:req.body.password,
+            password: req.body.password,
             confirmPassword: req.body.confirmPassword,
             imageUrl: DEFAULT_AVATAR
         };
@@ -61,7 +61,7 @@ module.exports = {
                         return res.send({
                             reason: err.toString()
                         });
-                    } else{
+                    } else {
                         res.redirect('/');
                     }
                 });
@@ -172,7 +172,10 @@ module.exports = {
     },
     getAllUsers: function (req, res, next) {
         User.find({}).exec(function (err, collection) {
-            User.paginate({}, { page: req.query.page, limit: req.query.limit }, function(err, users, pageCount, itemCount) {
+            User.paginate({}, {
+                page: req.query.page,
+                limit: req.query.limit
+            }, function (err, users, pageCount, itemCount) {
                 if (err) {
                     console.log('Cannot find users...');
                     return;

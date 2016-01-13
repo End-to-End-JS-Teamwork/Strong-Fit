@@ -3,6 +3,7 @@
 var passport = require('passport'),
     socket = require('./socket'),
     viewModels = require('../view-models');
+// notifirer = require('../utilities/notifier');
 
 module.exports = {
     login: function (req, res, next) {
@@ -12,9 +13,8 @@ module.exports = {
             }
 
             if (!user) {
-                res.send({
-                    success: false
-                });
+                req.session.error = 'Username or password do not match!';
+                res.redirect('/login');
             }
 
             req.logIn(user, function (err) {
@@ -27,13 +27,7 @@ module.exports = {
                     username: user.username
                 });
 
-
                 res.redirect('/');
-                //res.send({
-                //    success: true,
-                //    user: viewModels.UserViewModel.getUserViewModel(user),
-                //    token: user.token
-                //});
             });
         });
 
@@ -42,7 +36,6 @@ module.exports = {
     logout: function (req, res, next) {
         req.logout();
         res.redirect('/');
-        res.end();
     },
     isAuthenticated: function (req, res, next) {
         if (!req.isAuthenticated()) {

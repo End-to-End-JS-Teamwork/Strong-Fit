@@ -26,4 +26,16 @@ module.exports = function (app, config) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(express.static(config.rootPath + STATIC_DIRECTORY));
+    app.use(function(req, res, next) {
+        if (req.session.error) {
+            var msg = req.session.error;
+            req.session.error = undefined;
+            app.locals.errorMessage = msg;
+        }
+        else {
+            app.locals.errorMessage = undefined;
+        }
+
+        next();
+    });
 };
