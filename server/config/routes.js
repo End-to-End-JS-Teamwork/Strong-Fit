@@ -41,6 +41,8 @@ module.exports = function (app) {
     });
     app.get('/admin/users', auth.isInRole('admin'), controllers.users.getAllUsers);
     app.get('/admin/articles', auth.isInRole('admin'), controllers.article.getAllArticles);
+    app.get('/admin/articles/add', auth.isInRole('admin'), controllers.article.getCreateArticle);
+    app.post('/admin/articles/add', auth.isInRole('admin'), controllers.article.postCreateArticle);
 
     // Default
     app.get('/', function (req, res) {

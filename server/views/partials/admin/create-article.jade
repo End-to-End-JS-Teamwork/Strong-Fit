@@ -1,0 +1,18 @@
+extends ../../includes/layout
+block main-content
+    .col-lg-5(style="margin-right: -270px;")
+        include administration
+    .col-lg-9
+        h3 Нова статия
+        hr
+        form.form(role='form', name='newArticleForm', method='POST', action='/admin/articles/add' novalidate)
+            .row
+            br
+            input#title.form-control(name='title', placeholder='Заглавие на статията', type='text', required='')
+            br
+            textarea#description.form-control(name='description', placeholder='Тяло на статията', required='' style='height: 250px;')
+            br
+            input#imageUrl.form-control(name='imageUrl', placeholder='Линк към снимка', type='text', required='')
+            br
+            button.btn.btn-md.btn-primary.btn-block(type="submit" value="Add")
+                | Добави

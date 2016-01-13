@@ -51,18 +51,16 @@ block main-content
                 .row
                     .col-lg-offset-1.col-lg-10
                         if paginate.hasPreviousPages || paginate.hasNextPages(10)
-                            .navigation.well-sm#pagination.col-lg-4
+                            .navigation.well-sm#pagination.col-lg-12
                                 ul.pager
                                     if paginate.hasPreviousPages
                                         li.previous
                                             a(href=paginate.href(true)).prev
-                                                i.fa.fa-arrow-circle-left
-                                                |  Previous
+                                                |    Назад
                                     if pages
                                         each page in pages
                                             a.pageButtons.btn.btn-primary(href=page.url)= page.number
                                     if paginate.hasNextPages(10)
                                         li.next
                                             a(href=paginate.href()).next
-                                                | Next&nbsp;
-                                                i.fa.fa-arrow-circle-right
+                                                | Напред

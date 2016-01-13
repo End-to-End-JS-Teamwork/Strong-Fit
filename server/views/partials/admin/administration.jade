@@ -1,20 +1,20 @@
 extends ../../includes/layout
 block main-content
-        .col-lg-5
-            h3
+        .col-lg-3(style="width: 250px;")
+            h3(style="width: 250px;")
                 i.glyphicon.glyphicon-briefcase
-                |  Admin panel
+                |  Администрация
             hr
             ul.nav.nav-stacked
                 li
-                    a(href='#/administration')
+                    a(href='/admin/articles/add')
                         i.glyphicon.glyphicon-pencil
-                        |  New Article
+                        |  Нова статия
                 li
                     a(href="/admin/users")
                         i.glyphicon.glyphicon-th-list
-                        |  Users
+                        |  Потребители
                 li
                     a(href="/admin/articles")
                         i.glyphicon.glyphicon-book
-                        |  Articles
+                        |  Статии

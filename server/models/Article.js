@@ -9,16 +9,16 @@ var articleSchema = mongoose.Schema({
         },
         required: true,
         require: '{PATH} is required',
-        message: '{PATH} title should be between 5 and 25 symbols'
+        message: '{PATH} title should be between 5 and 50 symbols'
     },
     description: {
         type: String,
         validate: function (input) {
-            return (input.length > 100 && input.length <= 3000);
+            return (input.length > 100 && input.length <= 6000);
         },
         required: true,
         require: '{PATH} is required',
-        message: '{PATH} description should be between 100 and 3000 symbols'
+        message: '{PATH} description should be between 100 and 6000 symbols'
     },
     createdOn: {type: Date, default: Date.now},
     createdBy: {type: String},

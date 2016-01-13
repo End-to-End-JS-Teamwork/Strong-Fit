@@ -168,7 +168,7 @@ module.exports = {
                     return;
                 }
 
-                req.session.error = 'Success: User deleted successfully | User: ' + req.body.username;
+                //req.session.error = 'Success: User deleted successfully | User: ' + req.body.username;
                 res.redirect('/admin/users');
                 res.status(200);
             });
@@ -227,7 +227,7 @@ module.exports = {
 
                 res.render('partials/admin/users', {
                     users: userCollection,
-                    sectionHeader: 'Users',
+                    sectionHeader: 'Потребители',
                     pageCount: pageCount,
                     itemCount: itemCount,
                     pages: paginate.getArrayPages(req)(3, usersCollection.length / limit, req.query.page)

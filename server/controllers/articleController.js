@@ -3,7 +3,10 @@ var Article = require('mongoose').model('Article'),
     viewModels = require('../view-models');
 
 module.exports = {
-    createArticle: function (req, res, next) {
+    getCreateArticle: function (req, res, next) {
+        res.render('partials/admin/create-article');
+    },
+    postCreateArticle: function (req, res, next) {
         var article = {
             title: req.body.title,
             description: req.body.description,
@@ -18,7 +21,7 @@ module.exports = {
                 return;
             }
 
-            req.session.error = 'Success: Article created';
+            //req.session.error = 'Success: Article created';
             res.redirect('/admin/articles');
         });
     },
@@ -54,12 +57,12 @@ module.exports = {
                         var firstDate = new Date(firstArticle.createdOn),
                             secondDate = new Date(secondArticle.createdOn);
 
-                        return firstDate - secondDate;
+                        return secondDate - firstDate;
                     })
                 }
 
                 var page = req.query.page;
-                var limit = 4;
+                var limit = 2;
                 var articlesCollection = [];
                 for (var i = ((page - 1) * limit), j = i; i < j + limit; i++) {
                     articlesCollection.push(articleViewModel[i]);
@@ -67,10 +70,10 @@ module.exports = {
 
                 res.render('partials/admin/articles', {
                     articles: articlesCollection,
-                    sectionHeader: 'Articles',
+                    sectionHeader: 'Статии',
                     pageCount: pageCount,
                     itemCount: itemCount,
-                    pages: paginate.getArrayPages(req)(3, articleViewModel.length / limit, req.query.page)
+                    pages: paginate.getArrayPages(req)(5, articleViewModel.length / limit, req.query.page)
                 });
             });
         });

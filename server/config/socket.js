@@ -10,7 +10,7 @@ var clients = {},
 function getToken(payload) {
     // The payload will be sent inside the token.
     // It can be username, id etc.
-    var token = jwt.sign(payload, secret, {expiresInMinutes: 60 * 5});
+    var token = jwt.sign(payload, secret, {expiresIn: 6000 * 5});
     return token;
 }
 
