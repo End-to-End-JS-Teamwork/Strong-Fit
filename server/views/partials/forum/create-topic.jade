@@ -1,0 +1,18 @@
+extends ../../includes/layout
+block main-content
+    .col-lg-offset-1.col-lg-10
+        h3 Нова тема
+        hr
+        form.form(role='form', name='newTopicForm', method='POST', action='/forum/topics/add' novalidate)
+            .row
+            br
+            input#title.form-control(name='name', placeholder='Заглавие на темата', type='text', required='')
+            br
+            textarea#description.form-control(name='description', placeholder='', required='' style='height: 250px;')
+            br
+            select.form-control(name='subcategory' style="margin-bottom: 15px;")
+                each subcategory in collection
+                    option(value=subcategory)
+                        = subcategory.name
+            button.btn.btn-md.btn-primary.btn-block(type="submit" value="Add")
+                | Добави

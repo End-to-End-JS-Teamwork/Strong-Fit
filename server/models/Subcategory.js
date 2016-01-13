@@ -11,10 +11,7 @@ var subcategorySchema = mongoose.Schema({
         message: '{PATH} name of the subcategory should be between 5 and 30 symbols'
     },
     category: {type: String},
-    topics: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Topic'
-    }]
+    topics: [String]
 });
 
 var Subcategory = mongoose.model('Subcategory', subcategorySchema);
@@ -38,11 +35,7 @@ function subcategorySeed() {
                 Subcategory.create({
                     name: 'Често задавани въпроси',
                     category: 'СтронгФит',
-                    topics: [
-                        'Topic 1',
-                        'Topic 2',
-                        'Topic 3'
-                    ]
+                    topics: []
                 });
 
                 Subcategory.create({
@@ -60,7 +53,9 @@ function subcategorySeed() {
                 Subcategory.create({
                     name: 'Групови тренировки',
                     category: 'CrossFit',
-                    topics: []
+                    topics: [
+                        'Групова тренировка в петък - 14.01.2016 - Южен Парк'
+                    ]
                 });
 
                 Subcategory.create({
@@ -72,7 +67,9 @@ function subcategorySeed() {
                 Subcategory.create({
                     name: 'Хранителни режими за покачване на тегло',
                     category: 'Хранене',
-                    topics: []
+                    topics: [
+                        'Споделете как се хранете, когато качвате'
+                    ]
                 });
 
                 Subcategory.create({
@@ -90,7 +87,12 @@ function subcategorySeed() {
                 Subcategory.create({
                     name: 'Рецепти',
                     category: 'Хранене',
-                    topics: []
+                    topics: [
+                        'Добра рецепта за готвен заек',
+                        'Споделете какви шейкове обичате',
+                        'Протеинови сладки',
+                        'Здравословен сандвич за победители'
+                    ]
                 });
 
                 Subcategory.create({

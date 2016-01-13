@@ -287,3 +287,7 @@ a.btn.btn-primary {
         visibility:hidden;
     }
 }
+
+.topicName {
+    height: 40px;
+}

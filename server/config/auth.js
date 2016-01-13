@@ -40,7 +40,7 @@ module.exports = {
     isAuthenticated: function (req, res, next) {
         if (!req.isAuthenticated()) {
             res.status(401);
-            res.end();
+            res.render('partials/users/login');
         } else {
             next();
         }
