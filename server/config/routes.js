@@ -39,12 +39,12 @@ module.exports = function (app) {
     app.get('/admin/administration', auth.isInRole('admin'), function (req, res) {
         res.render('partials/admin/administration');
     });
-    app.get('/admin/users', auth.isInRole('admin'), controllers.users.getAllUsers);
+    app.get('/admin/users',  auth.isInRole('admin'), controllers.users.getAllUsers);
     app.get('/admin/articles', auth.isInRole('admin'), controllers.article.getAllArticles);
 
     // Default
     app.get('/', function (req, res) {
-        res.render('index', {currentUser: req.user});
+        res.render('index');
     });
 
     // Errors

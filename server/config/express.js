@@ -50,4 +50,11 @@ module.exports = function (app, config) {
 
         next();
     });
+    app.use(function(req, res, next) {
+        if (req.user) {
+            app.locals.currentUser = req.user;
+        }
+
+        next();
+    });
 };
