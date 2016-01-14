@@ -2,7 +2,7 @@
  
 -<h1 align="center">Strong-Fit</h1>
 
-# Online 2016 Team 104-Telerik
+-<h1 align="center"> Online 2016 Team 104-Telerik</h1>
 ---
 
 ## Team Members
@@ -10,7 +10,7 @@
 * Radostin Angelov
 * Todor Dakov
 
-## Secret Agent Service
+## Strong-Fit
 
 Форум за хора занимаващи се с Crossfit
 
