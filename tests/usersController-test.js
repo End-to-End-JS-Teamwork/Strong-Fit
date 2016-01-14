@@ -1,45 +1,62 @@
-var assert = require('assert');
-var superagent = require('superagent');
-var server = require('../server');
-// var users = require('../users');
-var status = require('http-status');
+var express = require('express');
+var request = require('supertest');
 
-describe('/', function() {
-    var app;
+describe('app.route', function(){
+    it('should return a new route', function(done){
+        var app = express();
 
-    before(function() {
-        app = server(3210);
+        app.route('/login')
+            .get(function(req, res) {
+                res.send('get');
+            })
+            .post(function(req, res) {
+                res.send('post');
+            });
+
+        request(app)
+            .post('/login')
+            .expect('post', done);
     });
 
-    after(function() {
-        app.close();
+    it('should all .VERB after .all', function(done){
+        var app = express();
+
+        app.route('/profile')
+            .all(function(req, res, next) {
+                next();
+            })
+            .get(function(req, res) {
+                res.send('get');
+            })
+            .post(function(req, res) {
+                res.send('post');
+            });
+
+        request(app)
+            .post('/profile')
+            .expect('post', done);
     });
 
-    it('Get /admin/articles:id should return 200 when invalid', function (done) {
-        app.request()
-            .get('/admin/articles/invalid')
-            .expect(200, done);
+    it('should support dynamic routes', function(done){
+        var app = express();
+
+        app.route('/:foo')
+            .get(function(req, res) {
+                res.send(req.params.foo);
+            });
+
+        request(app)
+            .get('/test')
+            .expect('test', done);
     });
 
-    it('returns username if name param is a valid user', function(done) {
-       // server.list = ['test'];
-        superagent.get('http://localhost:3210').end(function(err, res) {
-            assert.ifError(err);
-            assert.equal(res.status, status.OK);
-            var result = JSON.parse(res.text);
-            assert.deepEqual({ article: 'test' }, result);
-            done();
-        });
-    });
+    it('should not error on empty routes', function(done){
+        var app = express();
 
-    it('returns 404 if user named `params.name` not found', function(done) {
-        users.list = ['test'];
-        superagent.get('http://localhost:3210/notfound').end(function(err, res) {
-            assert.ifError(err);
-            assert.equal(res.status, status.NOT_FOUND);
-            var result = JSON.parse(res.text);
-            assert.deepEqual({ error: 'Not Found' }, result);
-            done();
-        });
+        app.route('/:foo');
+
+        request(app)
+            .get('/test')
+            .expect(404, done);
     });
 });
