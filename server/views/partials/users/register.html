@@ -11,16 +11,16 @@
   <body>
     <header class="nav navbar-default navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit Forum</a></div>
+        <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit</a></div>
         <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/forum">Forum</a></li>
+            <li><a href="/">Начало</a></li>
+            <li><a href="/forum">Форум</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/register">Register</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Регистрация</a></li>
+            <li><a href="/login">Вход</a></li>
           </ul>
         </div>
       </div>
@@ -29,30 +29,30 @@
     </div>
     <div class="container center-block"><br>
       <div class="row">
-        <div id="register-user-container" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
+        <div id="register-user-container" style="margin-top: -35px;" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
           <legend>
-            <h1>Register</h1>
+            <h1>Регистрация</h1>
           </legend>
           <form role="form" name="newUserForm" method="POST" action="/register" novalidate class="form">
             <div class="row">
               <div class="col-xs-6 col-md-6">
-                <label for="firstname">First Name</label>
-                <input id="firstname" name="firstName" placeholder="First Name" type="text" required="" autofocus="" class="form-control">
+                <label for="firstname">Име</label>
+                <input id="firstname" name="firstName" placeholder="" type="text" required="" autofocus="" class="form-control">
               </div>
               <div class="col-xs-6 col-md-6">
-                <label for="lastname">Last Name</label>
-                <input id="lastname" name="lastName" placeholder="Last Name" type="text" required="" class="form-control">
+                <label for="lastname">Фамилия</label>
+                <input id="lastname" name="lastName" placeholder="" type="text" required="" class="form-control">
               </div>
             </div><br>
             <label for="email">E-mail</label>
-            <input id="email" name="email" placeholder="E-mail" type="email" required="" class="form-control"><br>
-            <label for="username">Username</label>
-            <input id="username" name="username" placeholder="Username" type="text" required="" class="form-control"><br>
-            <label for="password">Password</label>
-            <input id="password" name="password" placeholder="Password" type="password" required="" class="form-control"><br>
-            <label for="confirmPassword">Confirm Password</label>
-            <input id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" type="password" required="" class="form-control"><br>
-            <button type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
+            <input id="email" name="email" placeholder="" type="email" required="" class="form-control"><br>
+            <label for="username">Потребителско име</label>
+            <input id="username" name="username" placeholder="" type="text" required="" class="form-control"><br>
+            <label for="password">Парола</label>
+            <input id="password" name="password" placeholder="" type="password" required="" class="form-control"><br>
+            <label for="confirmPassword">Повтори парола</label>
+            <input id="confirmPassword" name="confirmPassword" placeholder="" type="password" required="" class="form-control"><br>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Регистрирай</button>
           </form>
         </div>
       </div>

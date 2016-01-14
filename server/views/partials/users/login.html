@@ -11,16 +11,16 @@
   <body>
     <header class="nav navbar-default navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit Forum</a></div>
+        <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit</a></div>
         <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/forum">Forum</a></li>
+            <li><a href="/">Начало</a></li>
+            <li><a href="/forum">Форум</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/register">Register</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Регистрация</a></li>
+            <li><a href="/login">Вход</a></li>
           </ul>
         </div>
       </div>
@@ -31,15 +31,13 @@
       <div class="row">
         <div id="register-user-container" class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 well well-lg">
           <legend>
-            <h1>Login</h1>
+            <h1>Вход</h1>
           </legend>
           <form role="form" name="newUserForm" method="POST" action="/login" novalidate class="form">
             <div class="row"></div><br>
-            <label for="username">Username</label>
-            <input id="username" name="username" placeholder="Username" type="text" required="" class="form-control"><br>
-            <label for="password">Password</label>
-            <input id="password" name="password" placeholder="Password" type="password" required="" class="form-control"><br>
-            <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Login</button>
+            <input id="username" name="username" placeholder="Потребителско име" type="text" required="" class="form-control"><br>
+            <input id="password" name="password" placeholder="Парола" type="password" required="" class="form-control"><br>
+            <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Вход</button>
           </form>
         </div>
       </div>
