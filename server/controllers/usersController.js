@@ -166,7 +166,23 @@ module.exports = {
                     user.hashPass = encryption.generateHashedPassword(user.salt, fields.password);
                 }
                 console.log('gosho');
-                user.save(function (err) {
+                User.update({_id: req.body._id}, req.bod, function (err) {
+                    if (err) {
+                        res.status(400).send('Error updating user: ' + err);
+                        console.log(err);
+                        return;
+                    }
+
+                    console.log(req.body._id);
+                    User.findOne({_id: req.body._id}).exec(function (err, user) {
+                        console.log(user);
+                        res.send(user);
+                        res.status(200).send('User updated successfully!');
+                        res.redirect('/');
+                    })
+                });
+
+                /*User.update(function (err) {
                     if (err) {
                         res.status(400).send('Error updating user: ' + err);
                         return;
@@ -174,7 +190,7 @@ module.exports = {
 
                     res.status(200).send('User updated successfully!');
                     res.redirect('/');
-                });
+                });*/
             });
         });
     },
