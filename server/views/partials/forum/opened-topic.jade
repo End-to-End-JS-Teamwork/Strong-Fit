@@ -8,15 +8,15 @@ block main-content
             thead.text-left
                 tr
                     td.thead(style="height: 40px; border-bottom: 15px solid black", colspan="5")
-        each item in [{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}},{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}},{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}},{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}}]
-            #currentComment.col-sm-12
+        each item in comments
+            #currentComment.col-md-12
                 .comment-tabs
                     .tab-content
                         #comments-logout.tab-pane.active
                             ul.media-list
                                 li.media
                                     a.pull-left(href='/')
-                                        img.media-object.img-circle(src="#{item.createdBy.imageUrl}", alt='profile')
+                                        img.media-object.img-circle(src="/common/img/default-avatar.jpg", alt='profile')
                                     .media-body
                                         .well.well-lg
                                             h4.media-heading.text-uppercase.reviews.text-left
@@ -42,3 +42,15 @@ block main-content
                                 li.next
                                     a(href=paginate.href()).next
                                         | Напред
+
+    .col-md-12.col-lg-offset-1
+        form#commentForm.form-horizontal(action='/forum/topic/#{sectionHeader}', method='POST', role='form')
+            .form-group
+                .col-sm-10
+                    textarea#addComment.form-control(name='content', rows='5')
+            .form-group
+                .col-sm-10.text-right
+                    button#submitComment.btn.btn-success(type='submit')
+                        span
+                            .glyphicon.glyphicon-send
+                         |  Summit comment

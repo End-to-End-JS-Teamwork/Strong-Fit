@@ -4,11 +4,29 @@ var Comment = require('mongoose').model('Comment'),
     helpers = require('../utilities/help-functions');
 
 module.exports = {
-    getCreateComment: function (req, res, next) {
-
-    },
     postCreateComment: function (req, res, next) {
+        var topicName = req.params.name;
+        console.log('Topic name: ' + topicName);
+        var name = helpers.replaceAll(topicName, '%20', ' ');
 
+        var comment = {
+            content: req.body.content,
+            topic: name,
+            createdBy: {
+                username: req.user.username,
+                imageUrl: req.user.imageUrl
+            }
+        };
+
+        Comment.create(comment, function (err, comment) {
+            if (err) {
+                console.log('Cannot create article: ' + err);
+                return;
+            }
+
+            req.session.error = 'Success: Успешно добавихте коментар';
+            res.redirect('/forum/topic/');
+        });
     },
     getAllComments: function (req, res, next) {
         Comment.find({}).exec(function (err, collection) {
@@ -94,9 +112,8 @@ module.exports = {
                 if (err) {
                     console.log(err);
                 }
-
+                console.log(collection);
                 var commentViewModel = viewModels.OpenedTopicViewModel.getOpenedTopicCommentsViewModel(collection);
-
                 var page = req.query.page;
                 var limit = 2;
                 var commentsCollection = [];

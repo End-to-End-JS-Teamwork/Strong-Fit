@@ -46,6 +46,7 @@ module.exports = function (app) {
     app.post('/forum/topics/add', auth.isAuthenticated, controllers.topic.postCreateTopic);
     app.get('/forum/articles/:id', controllers.article.getArticle);
     app.get('/forum/topic/:name', controllers.comment.getAllCommentsForTopic);
+    app.post('/forum/topic/:name', auth.isAuthenticated, controllers.comment.postCreateComment);
     app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
 
     // Default

@@ -341,3 +341,12 @@ a.btn.btn-primary {
     border: 1px solid #DDDDDD;
     margin-bottom: 20px;
 }
+
+#commentForm {
+    margin-bottom: 70px;
+}
+
+#addComment {
+    height: 150px;
+    margin-top: -50px;
+}

@@ -14,7 +14,10 @@ var commentSchema = mongoose.Schema({
     createdOn: {type: Date, default: Date.now},
     subcategory: {type: String},
     topic: {type: String},
-    createdBy: {type: String}
+    createdBy: {
+        username: String,
+        imageUrl: String
+    }
 });
 
 commentSchema.plugin(mongoosePaginate);

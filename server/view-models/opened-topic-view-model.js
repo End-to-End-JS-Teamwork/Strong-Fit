@@ -7,28 +7,20 @@ function OpenedTopicViewModel(comments) {
 
     for (var i = 0; i < comments.length; i++) {
         var comment = comments[i];
-        User.findOne({username: comment.createdBy}).exec(function (err, user) {
-            if (err) {
-                console.log('Cannot find user: ' + err);
-                return;
-            }
 
             var commentModel = {
                 content: comment.content,
                 createdOn: moment(comment.createdOn).fromNow(),
                 createdBy: {
-                    username: user.username,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    registerDate: user.registerDate,
-                    imageUrl: user.imageUrl
+                    username: comment.createdBy.username,
+                    imageUrl: comment.createdBy.imageUrl
                 }
             };
 
             openedTopicCommentsModel.push(commentModel);
-        });
     }
 
+    console.log('Collection to be returned LENGTH: ' + openedTopicCommentsModel.length);
     return openedTopicCommentsModel;
 }
 
