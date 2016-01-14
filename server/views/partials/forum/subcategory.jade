@@ -29,7 +29,7 @@ block main-content
                         tr
                             td.trow1.text-left.topicName
                                 strong
-                                    a(href='/')
+                                    a(href='/forum/topic/#{item}')
                                         = item
                             td.trow1(align='center', style='white-space: nowrap')
                                 |= item.firstName
@@ -40,7 +40,7 @@ block main-content
                         tr
                             td.trow2.text-left.topicName
                                 strong
-                                    a(href='/')
+                                    a(href='/forum/topic/#{item}')
                                         = item
                             td.trow2(align='center', style='white-space: nowrap')
                                 |= item.firstName

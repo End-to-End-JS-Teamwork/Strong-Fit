@@ -1,6 +1,7 @@
 var Comment = require('mongoose').model('Comment'),
     paginate = require('express-paginate'),
-    viewModels = require('../view-models');
+    viewModels = require('../view-models'),
+    helpers = require('../utilities/help-functions');
 
 module.exports = {
     getCreateComment: function (req, res, next) {
@@ -79,7 +80,39 @@ module.exports = {
         });
     },
     getAllCommentsForTopic: function (req, res, next) {
+        var topicName = req.params.name;
+        var name = helpers.replaceAll(topicName, '%20', ' ');
 
+        Comment.find({topic: name}).exec(function (err, collection) {
+            if (err) {
+                console.log('Cannot find comments with this topic: ' + err);
+                res.render('partials/main/not-found');
+                return;
+            }
+
+            Comment.paginate({}, { page: req.query.page, limit: req.query.limit }, function (err, comments, pageCount, itemCount) {
+                if (err) {
+                    console.log(err);
+                }
+
+                var commentViewModel = viewModels.OpenedTopicViewModel.getOpenedTopicCommentsViewModel(collection);
+
+                var page = req.query.page;
+                var limit = 2;
+                var commentsCollection = [];
+                for (var i = ((page - 1) * limit), j = i; i < j + limit; i++) {
+                    commentsCollection.push(commentViewModel[i]);
+                }
+
+                res.render('partials/forum/opened-topic', {
+                    comments: commentsCollection,
+                    sectionHeader: name,
+                    pageCount: pageCount,
+                    itemCount: itemCount,
+                    pages: paginate.getArrayPages(req)(5, commentViewModel.length / limit, req.query.page)
+                });
+            });
+        });
     },
     getAllCommentsForSubcategory: function (req, res, next) {
 

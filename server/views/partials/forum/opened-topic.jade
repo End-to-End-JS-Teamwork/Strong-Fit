@@ -1,0 +1,44 @@
+extends ../../includes/layout
+block main-content
+    .col-lg-10.text-right.col-lg-offset-1
+        h3.text-left
+            = sectionHeader
+        hr
+        table.col-lg-12
+            thead.text-left
+                tr
+                    td.thead(style="height: 40px; border-bottom: 15px solid black", colspan="5")
+        each item in [{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}},{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}},{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}},{content: 'mn qk komentar', createdOn: '14.01.2016', createdBy: {username: 'DimitarSD', firstName: 'Dimitar', lastName: 'Stoyanov', registerDate: '11.01.2016', imageUrl: '/common/img/default-avatar.jpg'}}]
+            #currentComment.col-sm-12
+                .comment-tabs
+                    .tab-content
+                        #comments-logout.tab-pane.active
+                            ul.media-list
+                                li.media
+                                    a.pull-left(href='/')
+                                        img.media-object.img-circle(src="#{item.createdBy.imageUrl}", alt='profile')
+                                    .media-body
+                                        .well.well-lg
+                                            h4.media-heading.text-uppercase.reviews.text-left
+                                                = item.createdBy.username
+                                            ul.media-date.text-uppercase.reviews.list-inline
+                                                li
+                                                    = item.createdOn
+                                            p.media-comment.text-left
+                                                = item.content
+        .row
+            .col-lg-offset-1.col-lg-10
+                if paginate.hasPreviousPages || paginate.hasNextPages(10)
+                    .navigation.well-sm#pagination.col-lg-12
+                        ul.pager
+                            if paginate.hasPreviousPages
+                                li.previous
+                                    a(href=paginate.href(true)).prev
+                                        |  Назад
+                            if pages
+                                each page in pages
+                                    a.pageButtons.btn.btn-primary(href=page.url)= page.number
+                            if paginate.hasNextPages(10)
+                                li.next
+                                    a(href=paginate.href()).next
+                                        | Напред
