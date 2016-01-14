@@ -251,7 +251,7 @@ a.btn.btn-primary {
     display: inline !important;
 }
 
-#username {
+#usernameAdminPart {
     height: 30px;
     border-radius: 3px;
     border: none;
@@ -286,4 +286,8 @@ a.btn.btn-primary {
         height:0;
         visibility:hidden;
     }
+}
+
+.topicName {
+    height: 40px;
 }

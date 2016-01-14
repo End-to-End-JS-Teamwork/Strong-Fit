@@ -1,9 +1,14 @@
 var Article = require('mongoose').model('Article'),
     paginate = require('express-paginate'),
-    viewModels = require('../view-models');
+    viewModels = require('../view-models'),
+    moment = require('moment');
+    moment.locale('bg');
 
 module.exports = {
-    createArticle: function (req, res, next) {
+    getCreateArticle: function (req, res, next) {
+        res.render('partials/admin/create-article');
+    },
+    postCreateArticle: function (req, res, next) {
         var article = {
             title: req.body.title,
             description: req.body.description,
@@ -18,7 +23,7 @@ module.exports = {
                 return;
             }
 
-            req.session.error = 'Success: Article created';
+            //req.session.error = 'Success: Article created';
             res.redirect('/admin/articles');
         });
     },
@@ -54,12 +59,12 @@ module.exports = {
                         var firstDate = new Date(firstArticle.createdOn),
                             secondDate = new Date(secondArticle.createdOn);
 
-                        return firstDate - secondDate;
+                        return secondDate - firstDate;
                     })
                 }
 
                 var page = req.query.page;
-                var limit = 4;
+                var limit = 2;
                 var articlesCollection = [];
                 for (var i = ((page - 1) * limit), j = i; i < j + limit; i++) {
                     articlesCollection.push(articleViewModel[i]);
@@ -67,11 +72,29 @@ module.exports = {
 
                 res.render('partials/admin/articles', {
                     articles: articlesCollection,
-                    sectionHeader: 'Articles',
+                    sectionHeader: 'Статии',
                     pageCount: pageCount,
                     itemCount: itemCount,
-                    pages: paginate.getArrayPages(req)(3, articleViewModel.length / limit, req.query.page)
+                    pages: paginate.getArrayPages(req)(5, articleViewModel.length / limit, req.query.page)
                 });
+            });
+        });
+    },
+    getArticle: function (req, res) {
+        console.log(decodeURIComponent(req.params.articleName));
+        Article.findOne({_id: req.params.id}, function (err, article) {
+            if (err) {
+                console.log(err);
+            }
+
+            res.render('partials/forum/article', {
+                article: {
+                    title: article.title,
+                    createdOn: moment(article.createdOn).fromNow(),
+                    description: article.description,
+                    imageUrl: article.imageUrl,
+                    createdBy: article.createdBy
+                }
             });
         });
     }

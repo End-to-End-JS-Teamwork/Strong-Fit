@@ -29,19 +29,22 @@ module.exports = function (app) {
     app.get('/favicon.ico', function (req, res) {
         res.sendFile(path.resolve(__dirname + '/../../favicon.ico'))
     });
-
-    // Forum
-    app.get('/forum', controllers.forumHome.getForumMainData);
-    app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
-    app.get('/forum/topics');
-    app.get('/forum/comments');
-
     // Admin: To enable admin add -> auth.isInRole('admin')
     app.get('/admin/administration', auth.isInRole('admin'), function (req, res) {
         res.render('partials/admin/administration');
     });
     app.get('/admin/users',  auth.isInRole('admin'), controllers.users.getAllUsers);
     app.get('/admin/articles', auth.isInRole('admin'), controllers.article.getAllArticles);
+    app.get('/admin/articles/add', auth.isInRole('admin'), controllers.article.getCreateArticle);
+    app.post('/admin/articles/add', auth.isInRole('admin'), controllers.article.postCreateArticle);
+
+    // Forum
+    app.get('/forum', controllers.forumHome.getForumMainData);
+    app.get('/forum/topics');
+    app.get('/forum/comments');
+    app.get('/forum/topics/add', auth.isAuthenticated, controllers.topic.getCreateTopic);
+    app.post('/forum/topics/add', auth.isAuthenticated, controllers.topic.postCreateTopic);
+    app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
 
     // Default
     app.get('/', function (req, res) {

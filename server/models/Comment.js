@@ -4,22 +4,16 @@ var commentSchema = mongoose.Schema({
     content: {
         type: String,
         validate: function (input) {
-            return (input.length > 10 && input.length < 1500);
+            return (input.length > 10 && input.length < 4000);
         },
         required: true,
         require: '{PATH} is required',
-        message: '{PATH} content of message should be between 10 and 1500 symbols'
+        message: '{PATH} content of message should be between 10 and 4000 symbols'
     },
     createdOn: {type: Date, default: Date.now},
     subcategory: {type: String},
-    topic: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Topic'
-    },
-    createdBy: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    }
+    topic: {type: String},
+    createdBy: {type: String}
 });
 
 var Comment = mongoose.model('Comment', commentSchema);

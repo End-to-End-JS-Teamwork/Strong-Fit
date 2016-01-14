@@ -20,7 +20,7 @@ block main-content
                                 a(href=paginate.href({sort: 'lastName'})) Сортирай по последно име
                                 |  |
                                 form#deleteUser.text-right(role='form', name='deleteUserForm', method='POST', action='/delete/user' novalidate )
-                                        input#username(name='username', placeholder='Потребителско име', type='text', required='')
+                                        input#usernameAdminPart(name='username', placeholder='Потребителско име', type='text', required='')
                                         button.btn.btn-sm.btn-success(type="submit" value="Delete")
                                             .glyphicon.glyphicon-trash
                                             |  Изтрий
@@ -82,18 +82,18 @@ block main-content
         .row
             .col-lg-offset-1.col-lg-10
                 if paginate.hasPreviousPages || paginate.hasNextPages(10)
-                    .navigation.well-sm#pagination.col-lg-4
+                    .navigation.well-sm#pagination.col-lg-12
                         ul.pager
                             if paginate.hasPreviousPages
                                 li.previous
                                     a(href=paginate.href(true)).prev
                                         i.fa.fa-arrow-circle-left
-                                        |  Previous
+                                        |  Назад
                             if pages
                                 each page in pages
                                     a.pageButtons.btn.btn-primary(href=page.url)= page.number
                             if paginate.hasNextPages(10)
                                 li.next
                                     a(href=paginate.href()).next
-                                        | Next&nbsp;
+                                        | Напред
                                         i.fa.fa-arrow-circle-right

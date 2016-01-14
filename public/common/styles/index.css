@@ -12,3 +12,7 @@ footer {
     color: white;
     font-size: 13px;
 }
+
+#pagination {
+    top: -90px;
+}

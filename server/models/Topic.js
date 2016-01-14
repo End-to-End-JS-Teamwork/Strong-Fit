@@ -12,14 +12,16 @@ var topicSchema = mongoose.Schema({
     },
     subcategory: {type: String},
     createdOn: {type: Date, default: Date.now},
-    createdBy: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    },
-    comments: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'Comment'
-    }]
+    createdBy: {type: String},
+    comments: [
+        {
+            content: String,
+            createdOn: Date,
+            subcategory: String,
+            topic: String,
+            createdBy: String
+        }
+    ]
 });
 
 var Topic = mongoose.model('Topic', topicSchema);

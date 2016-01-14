@@ -1,0 +1,13 @@
+extends ../../includes/layout
+block main-content
+    .container-fluid
+        .row
+            article(class="col-md-8 col-md-offset-2 .article" style="box-shadow: 4pt 4pt 3pt 2pt orange;")
+                header 
+                    h1 #{article.title}
+                    strong Създадена от: #{article.createdBy}, #{article.createdOn}
+                section
+                    img(src="#{article.imageUrl}" class="img-rounded")
+                    p #{article.description}
+            
+            
