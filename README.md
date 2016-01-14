@@ -32,7 +32,7 @@
 |GET (public)|/forum|Gets all articles|
 |GET (for registered)|/admin/articles/add|Creaat new articles|
 |POST (for registered)|/missions/add|Creates a new mission|
-|GET (for registered)|/forum/comments/:id|Add commentar|
+|GET (for registered)|/forum/comments/:id|Add comments|
 |POST (for registered)|/forum/topics|View all topic|
 |GET (for admin)|/admin/administration|Gets admin panel|
 |DELETE (for admin)|/admin/users/:id|Deletes the given user|
