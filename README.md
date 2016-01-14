@@ -6,7 +6,7 @@
 ---
 
 ## Team Members
-* Dimitar Stoyanov
+* Dimitar Stoyanov [Link to GitHub](https://github.com/DimitarSD)
 * Radostin Angelov
 * Todor Dakov
 
