@@ -7,6 +7,7 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport'),
     paginate = require('express-paginate'),
+    morgan  = require('morgan'),
     toastr = require('express-toastr'),
     STATIC_DIRECTORY = '/public',
     secretPassPhrase = 'SequGcJeUcAXR7SymwXMmW6kDr8aYH86jCrwE8UdC7n';
@@ -14,6 +15,9 @@ var express = require('express'),
 module.exports = function (app, config) {
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
+
+    app.use(morgan('dev'));
+
     app.use(cookieParser(secretPassPhrase));
     app.use(paginate.middleware(10, 50));
     app.use(bodyParser.json());
@@ -50,11 +54,11 @@ module.exports = function (app, config) {
 
         next();
     });
-    app.use(function(req, res, next) {
+   /* app.use(function(req, res, next) {
         if (req.user) {
             app.locals.currentUser = req.user;
         }
 
         next();
-    });
+    });*/
 };

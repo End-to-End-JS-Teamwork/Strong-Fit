@@ -72,26 +72,75 @@ module.exports = {
     getLogin: function (req, res) {
         res.render(PARTIAL_NAME + CONTROLLER_NAME + '/login');
     },
+    getUser: function (req, res) {
+        res.render(PARTIAL_NAME + CONTROLLER_NAME + '/profile', {currentUser:req.user,result: viewModels});
+    },
     updateUser: function (req, res, next) {
+
+        /* var currentUser = req.user;
+        console.log(currentUser.username);
+
+        // || User.currentUser.role === 'admin'
+        console.log(User.username);
+
+        if (User.username === req.username) {
+            var newUserData = req.body;
+            if (newUserData.password) {
+                if (newUserData.password !== newUserData.confirmPassword) {
+                    req.session.error = 'Passwords do not match!';
+                    res.redirect('/profile');
+                } else if (newUserData.password.length < 6) {
+                    req.session.error = 'Password should be at least 6 characters long!';
+                    res.redirect('/profile');
+                } else  {
+                    newUserData.salt = encryption.generateSalt();
+                    newUserData.hashPass = encryption.generateHashedPassword(newUserData.salt, newUserData.password);
+                }
+            }
+
+            console.log('stop')
+            debugger;
+            User.update(newUserData.username, req.body, function (err, updatedUser) {
+                if (err) {
+                    req.session.error = 'There was problem updating the user profile: ' + err.errmsg;
+                    res.redirect('/');
+                    return;
+                }
+
+                User.currentUser = updatedUser;
+                req.session.info = `${updatedUser.username} updated successfully.`;
+                res.redirect('back');
+            })
+        } else {
+            req.session.error = 'You do not have sufficient permissions to access this page!';
+            res.redirect('/');
+        }*/
+
+
+
         if (!fs.existsSync(DEFAULT_UPLOAD_DIRECTORY)) {
             fs.mkdirSync(DEFAULT_UPLOAD_DIRECTORY);
         }
+
+
 
         var form = new formidable.IncomingForm();
         form.encoding = 'utf-8';
         form.uploadDir = DEFAULT_UPLOAD_DIRECTORY;
         form.keepExtensions = true;
 
+
+
         form.parse(req, function (err, fields, files) {
             // Finds user to be updated
-            User.findOne({_id: fields._id}).exec(function (err, user) {
+            User.findOne({_id: req.params.id}).exec(function (err, user) {
                 if (err || !user) {
                     res.status(400);
                     res.send('Error updating user: ' + err);
                 }
 
-                user.firstName = fields.firstName;
-                user.lastName = fields.lastName;
+                User.firstName = req.user.firstName;
+                User.lastName = req.user.lastName;
 
                 if (files.image) {
                     if (process.env.NODE_ENV) {
@@ -116,7 +165,7 @@ module.exports = {
                     user.salt = encryption.generateSalt();
                     user.hashPass = encryption.generateHashedPassword(user.salt, fields.password);
                 }
-
+                console.log('gosho');
                 user.save(function (err) {
                     if (err) {
                         res.status(400).send('Error updating user: ' + err);
@@ -124,6 +173,7 @@ module.exports = {
                     }
 
                     res.status(200).send('User updated successfully!');
+                    res.redirect('/');
                 });
             });
         });
