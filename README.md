@@ -8,7 +8,7 @@
 ## Team Members
 * Dimitar Stoyanov [Link to GitHub](https://github.com/DimitarSD)
 * Radostin Angelov
-* Todor Dakov
+* Todor Dakov [Link to GitHub](https://github.com/tddold)
 
 ## Strong-Fit
 
