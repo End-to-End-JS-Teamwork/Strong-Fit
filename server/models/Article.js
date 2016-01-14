@@ -32,6 +32,7 @@ function articleSeed() {
     Article
         .find({})
         .exec(function (err, collection) {
+            console.log(collection);
             if (err) {
                 console.log('Cannot find articles...');
                 return;

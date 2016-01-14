@@ -1,0 +1,81 @@
+extends ../../includes/layout
+block main-content
+    .col-lg-10.text-right.col-lg-offset-1
+        h3.text-left
+            | Коментари
+        hr
+        table.col-lg-12
+            thead.text-left
+                tr
+                    td.thead.text-right(colspan='5')
+                        div
+                            strong
+                                a(href=paginate.href({sort: 'topic'})) Сортирай по тема
+                                |   |
+                                a(href=paginate.href({sort: 'date'}))  Сортирай по дата
+                                |   |
+                                a(href=paginate.href({sort: 'author'}))  Сортирай по автор
+                            br
+                            .smalltext
+            tbody
+                tr
+                    td.tcat.text-left
+                        span.smalltext
+                            strong Съдържание
+
+                    td.tcat(width='85', align='center', style='white-space: nowrap')
+                        span.smalltext
+                            strong Тема
+                    td.tcat(width='85', align='center', style='white-space: nowrap')
+                        span.smalltext
+                            strong Автор
+                    td.tcat(width='85', align='center', style='white-space: nowrap')
+                        span.smalltext
+                            strong Дата на създаване
+
+                each item, i in comments
+                    if i % 2 === 0
+                        tr
+                            td.trow1.text-left.topicName
+                                strong
+                                    a(href='/')
+                                        = item.content
+                            td.trow1(align='center', style='white-space: nowrap')
+                                = item.topic
+
+                            td.trow1(align='center', style='white-space: nowrap')
+                                = item.createdBy
+
+                            td.trow1(align='center', style='white-space: nowrap')
+                                = item.createdOn
+                    else
+                        tr
+                            td.trow2.text-left.topicName
+                                strong
+                                    a(href='/')
+                                        = item.content
+
+                            td.trow2(align='center', style='white-space: nowrap')
+                                = item.topic
+
+                            td.trow2(align='center', style='white-space: nowrap')
+                                = item.createdBy
+
+                            td.trow2(align='center', style='white-space: nowrap')
+                                = item.createdOn
+        .row
+            .col-lg-offset-1.col-lg-10
+                if paginate.hasPreviousPages || paginate.hasNextPages(10)
+                    .navigation.well-sm#pagination.col-lg-12
+                        ul.pager
+                            if paginate.hasPreviousPages
+                                li.previous
+                                    a(href=paginate.href(true)).prev
+                                        |  Назад
+                            if pages
+                                each page in pages
+                                    a.pageButtons.btn.btn-primary(href=page.url)= page.number
+                            if paginate.hasNextPages(10)
+                                li.next
+                                    a(href=paginate.href()).next
+                                        | Напред

@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate');
 
 var topicSchema = mongoose.Schema({
     name: {
@@ -23,6 +24,8 @@ var topicSchema = mongoose.Schema({
         }
     ]
 });
+
+topicSchema.plugin(mongoosePaginate);
 
 var Topic = mongoose.model('Topic', topicSchema);
 

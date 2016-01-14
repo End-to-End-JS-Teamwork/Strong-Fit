@@ -1,7 +1,7 @@
 function ForumHomeViewModel(categories, subcategories, comments) {
     this.categories = categories;
     this.subcategories = subcategories;
-    this.comments = groupComments(comments);
+    this.comments = comments;//groupComments(comments);
     return this;
 }
 

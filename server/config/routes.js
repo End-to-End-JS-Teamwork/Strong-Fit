@@ -39,10 +39,11 @@ module.exports = function (app) {
 
     // Forum
     app.get('/forum', controllers.forumHome.getForumMainData);
-    app.get('/forum/topics');
-    app.get('/forum/comments');
+    app.get('/forum/topics', auth.isAuthenticated, controllers.topic.getAllTopics);
+    app.get('/forum/comments', auth.isAuthenticated, controllers.comment.getAllComments);
     app.get('/forum/topics/add', auth.isAuthenticated, controllers.topic.getCreateTopic);
     app.post('/forum/topics/add', auth.isAuthenticated, controllers.topic.postCreateTopic);
+    app.get('/forum/articles/:id', controllers.article.getArticle);
     app.get('/forum/:category/:subcategory', controllers.subcategories.getTopics);
 
     // Default

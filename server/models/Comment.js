@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate');
 
 var commentSchema = mongoose.Schema({
     content: {
@@ -16,56 +17,40 @@ var commentSchema = mongoose.Schema({
     createdBy: {type: String}
 });
 
-var Comment = mongoose.model('Comment', commentSchema);
-var Topic = mongoose.model('Topic');
-var User = mongoose.model('User');
+commentSchema.plugin(mongoosePaginate);
 
-// Test comments (will be changed)
-var comments = ['Comment #1', 'Comment #2'];
+var Comment = mongoose.model('Comment', commentSchema);
 
 function commentSeed() {
-    Comment
-        .find({})
-        .exec(function (err, collection) {
-            if (err) {
-                console.log('Cannot find comments...');
-                return;
-            }
-
-            User
-                .find({})
-                .exec(function (err, users) {
-                    if (err) {
-                        console.log('Seeding comments error: ' + err);
-                        return;
-                    }
-
-                    Topic
-                        .find({})
-                        .exec(function (err, topics) {
-                            if (err) {
-                                console.log('Seeding comments error: ' + err);
-                                return;
-                            }
-
-                            if (collection.length === 0) {
-                                comments.forEach(function (commentContent) {
-                                    users.forEach(function (user) {
-                                        topics.forEach(function (topic) {
-                                            Comment.create({
-                                                content: commentContent,
-                                                topic: topic,
-                                                createdBy: user
-                                            });
-                                        });
-                                    });
-                                });
-
-                                console.log('Comments added to database...');
-                            }
-                        });
-                });
+    Comment.find({}).exec(function (err, collection) {
+        Comment.create({
+            content: 'Триците накисваш ли ги предварително?',
+            subcategory: 'Рецепти',
+            topic: 'Бананови мъфини',
+            createdBy: 'mariaaa'
         });
+
+        Comment.create({
+            content: 'Не',
+            subcategory: 'Рецепти',
+            topic: 'Бананови мъфини',
+            createdBy: 'pavel'
+        });
+
+        Comment.create({
+            content: 'Изглежда вкусно, още днес ще се пробва',
+            subcategory: 'Рецепти',
+            topic: 'Бананови мъфини',
+            createdBy: 'albena'
+        });
+
+        Comment.create({
+            content: 'А дали може овесените трици да се заместят с нещо друго?',
+            subcategory: 'Рецепти',
+            topic: 'Бананови мъфини',
+            createdBy: 'zdravko'
+        });
+    });
 }
 
 module.exports.seedInitialComments = function() {

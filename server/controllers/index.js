@@ -7,7 +7,8 @@ var forumHomeController = require('../controllers/forumHomeController'),
     subcategoryController = require('../controllers/subcategoryController'),
     administrationController = require('../controllers/administrationController'),
     articleController = require('../controllers/articleController'),
-    topicController = require('../controllers/topicController');
+    topicController = require('../controllers/topicController'),
+    commentController = require('../controllers/commentController');
 
 module.exports = {
     users: usersController,
@@ -15,5 +16,6 @@ module.exports = {
     subcategories: subcategoryController,
     administration: administrationController,
     article: articleController,
-    topic: topicController
+    topic: topicController,
+    comment: commentController
 };
