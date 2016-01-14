@@ -17,7 +17,7 @@
 ## Логика 
 
  -	Потребителя трябва да се регестрира въув форума ако желае да коментира или да създава теми.
- - 	Има един администратор който е първоначално зададен.
+ - Има един администратор който е първоначално зададен.
  -	Администартора може да указва дали някой да е с администраторски права.
  -	Потребителите могат да разглеждат статиите без да са регистирани или логната. 
  -	Всеко потребител може да си обновява информацията в профила.
@@ -36,17 +36,6 @@
 |POST (for registered)|/forum/topics|View all topic|
 |GET (for admin)|/admin/administration|Gets admin panel|
 |DELETE (for admin)|/admin/users/:id|Deletes the given user|
-|GET (public)|/users/agents|Gets public information about agents|
-|GET (public)|/users/commissioners|Gets public information about commissioners|
-|GET (for registered)|/users/details/:id|Gets user details|
-|GET (for registered)|/messages/inbox|Gets all messages to the given user|
-|GET (for registered)|/messages/outbox|Gets all messages sent by the given user|
-|GET (for registered)|/messages/send/:username|Loads the page for sending messages|
-|POST (for registered)|/messages/send/:username|Sends message to the given user|
-|GET (for registered)|/chat|Gets the chat screen|
-|POST (public) |/login|Logs the user into the website|
-|POST (for registered)|/logout|Logs out the user|
-|GET (public) |/ |Shows the homescreen|
 
 - - - - 
 
