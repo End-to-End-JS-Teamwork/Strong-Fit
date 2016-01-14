@@ -2,7 +2,7 @@
  
 -<h1 align="center">Strong-Fit</h1>
 
-# Team-3-Telerik
+# Online 2016 Team 104-Telerik
 ---
 
 ## Team Members
