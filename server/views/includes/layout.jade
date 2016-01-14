@@ -27,7 +27,7 @@ html
 
                          if (currentUser)
                              li
-                                 a(href="/profile") #{currentUser.username}'s profile
+                                 a(href="/profile") #{currentUser.firstName ? currentUser.firstName: 'User'}'s profile
                              li
                                  a(href='/logout') Logout
                          else

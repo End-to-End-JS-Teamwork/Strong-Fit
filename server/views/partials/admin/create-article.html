@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StrongFit Forum</title>
+    <link rel="stylesheet" href="/common/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/common/styles/index.css">
+    <link rel="stylesheet" href="/common/styles/forum.css">
+  </head>
+  <body>
+    <header class="nav navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit Forum</a></div>
+        <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/forum">Forum</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div id="hideMe" class="container">
+    </div>
+    <div style="margin-right: -270px;" class="col-lg-5"><!DOCTYPE html>
+      <html>
+        <head>
+          <title>StrongFit Forum</title>
+          <link rel="stylesheet" href="/common/styles/bootstrap.min.css">
+          <link rel="stylesheet" href="/lib/toastr/toastr.min.css">
+          <link rel="stylesheet" href="/css/site.css">
+          <link rel="stylesheet" href="/common/styles/index.css">
+          <link rel="stylesheet" href="/common/styles/forum.css">
+        </head>
+        <body>
+          <header class="nav navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header"><a href="/" class="navbar-brand">StrongFit Forum</a></div>
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+              <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/forum">Forum</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/register">Register</a></li>
+                  <li><a href="/login">Login</a></li>
+                </ul>
+              </div>
+            </div>
+          </header>
+          <div id="hideMe" class="container">
+          </div>
+          <div style="width: 250px;" class="col-lg-3">
+            <h3 style="width: 250px;"><i class="glyphicon glyphicon-briefcase"></i> Администрация</h3>
+            <hr>
+            <ul class="nav nav-stacked">
+              <li><a href="/admin/articles/add"><i class="glyphicon glyphicon-pencil"></i> Нова статия</a></li>
+              <li><a href="/admin/users"><i class="glyphicon glyphicon-th-list"></i> Потребители</a></li>
+              <li><a href="/admin/articles"><i class="glyphicon glyphicon-book"></i> Статии</a></li>
+            </ul>
+          </div>
+          <footer class="panel-footer navbar-fixed-bottom">
+            <p class="text-center"><a href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name">&copy; StrongFit</a></p>
+          </footer>
+          <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+          <script type="text/javascript" src="/lib/angular/angular.js"></script>
+          <script type="text/javascript" src="/lib/angular-resource/angular-resource.min.js"></script>
+          <script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
+          <script type="text/javascript" src="/lib/angular-cookies/angular-cookies.min.js"></script>
+        </body>
+      </html>
+    </div>
+    <div class="col-lg-9">
+      <h3>Нова статия</h3>
+      <hr>
+      <form role="form" name="newArticleForm" method="POST" action="/admin/articles/add" novalidate class="form">
+        <div class="row"></div><br>
+        <input id="title" name="title" placeholder="Заглавие на статията" type="text" required="" class="form-control"><br>
+        <textarea id="description" name="description" placeholder="Тяло на статията" required="" style="height: 250px;" class="form-control"></textarea><br>
+        <input id="imageUrl" name="imageUrl" placeholder="Линк към снимка" type="text" required="" class="form-control"><br>
+        <button type="submit" value="Add" class="btn btn-md btn-primary btn-block">Добави</button>
+      </form>
+    </div>
+    <footer class="panel-footer navbar-fixed-bottom">
+      <p class="text-center"><a href="https://github.com/End-to-End-JS-Teamwork/Strong-Fit" id="copy-name">&copy; StrongFit</a></p>
+    </footer>
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/lib/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-cookies/angular-cookies.min.js"></script>
+  </body>
+</html>
