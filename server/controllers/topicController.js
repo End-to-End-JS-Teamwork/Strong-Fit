@@ -1,7 +1,8 @@
 var Topic = require('mongoose').model('Topic'),
     Subcategory = require('mongoose').model('Subcategory'),
     paginate = require('express-paginate'),
-    viewModels = require('../view-models');
+    viewModels = require('../view-models'),
+    security = require('../utilities/security');
 
 module.exports = {
     getCreateTopic: function (req, res, next) {
@@ -17,14 +18,14 @@ module.exports = {
     postCreateTopic: function (req, res, next) {
         console.log(req);
         var topic = {
-            name: req.body.name,
+            name: security.handleHtmlTags(req.body.name),
             subcategory: req.body.subcategory,
             createdBy: req.user.username,
             comments: [
                 {
-                    content: req.body.description,
+                    content: security.handleHtmlTags(req.body.description),
                     subcategory: req.body.subcategory,
-                    topic: req.body.name,
+                    topic: security.handleHtmlTags(req.body.name),
                     createdBy: req.user.username
                 }
             ]

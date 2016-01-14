@@ -11,7 +11,7 @@ html
         header.nav.navbar-default.navbar-fixed-top
             .container
                 .navbar-header
-                    a.navbar-brand(href="/") StrongFit Forum
+                    a.navbar-brand(href="/") StrongFit
                 button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
                     span.sr-only Toggle navigation
                     span.icon-bar
@@ -20,21 +20,25 @@ html
                 .navbar-collapse.collapse
                     ul.nav.navbar-nav
                         li
-                            a(href="/") Home
+                            a(href="/") Начало
                         li
-                            a(href="/forum") Forum
+                            a(href="/forum") Форум
+                        if (currentUser)
+                            if (currentUser.isInRole('admin'))
+                                li
+                                    a(href="/admin/administration") Администрация
                      ul.nav.navbar-nav.navbar-right
 
                          if (currentUser)
                              li
                                  a(href="/profile") #{currentUser.firstName ? currentUser.firstName: 'User'}'s profile
                              li
-                                 a(href='/logout') Logout
+                                 a(href='/logout') Изход
                          else
                              li
-                                 a(href="/register") Register
+                                 a(href="/register") Регистрация
                              li
-                                 a(href="/login") Login
+                                 a(href="/login") Вход
         .container#hideMe
             if (errorMessage)
                 .alert.alert-danger

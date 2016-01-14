@@ -8,33 +8,33 @@ block main-content
     .container.center-block
         br
         .row
-            #register-user-container.col-xs-12.col-sm-12.col-md-6.col-md-offset-3.well.well-lg
+            #register-user-container.col-xs-12.col-sm-12.col-md-6.col-md-offset-3.well.well-lg(style="margin-top: -35px;")
 
                 legend
-                    h1 Register
+                    h1 Регистрация
 
-                form.form(role='form', name='newUserForm', method='POST', action='/register' novalidate )
+                form.form(role='form', name='newUserForm', method='POST', action='/register' novalidate)
                     .row
                         .col-xs-6.col-md-6
-                            label(for='firstname') First Name
-                            input#firstname.form-control(name='firstName', placeholder='First Name', type='text', required='', autofocus='')
+                            label(for='firstname') Име
+                            input#firstname.form-control(name='firstName', placeholder='', type='text', required='', autofocus='')
                         .col-xs-6.col-md-6
-                            label(for='lastname') Last Name
-                            input#lastname.form-control(name='lastName', placeholder='Last Name', type='text', required='')
+                            label(for='lastname') Фамилия
+                            input#lastname.form-control(name='lastName', placeholder='', type='text', required='')
                     br
                     label(for='email') E-mail
-                    input#email.form-control(name='email', placeholder='E-mail', type='email', required='')
+                    input#email.form-control(name='email', placeholder='', type='email', required='')
                     br
-                    label(for='username') Username
-                    input#username.form-control(name='username', placeholder='Username', type='text', required='')
+                    label(for='username') Потребителско име
+                    input#username.form-control(name='username', placeholder='', type='text', required='')
                     br
-                    label(for='password') Password
-                    input#password.form-control(name='password', placeholder='Password', type='password', required='')
+                    label(for='password') Парола
+                    input#password.form-control(name='password', placeholder='', type='password', required='')
                     br
-                    label(for='confirmPassword') Confirm Password
-                    input#confirmPassword.form-control(name='confirmPassword', placeholder='Confirm Password', type='password', required='')
+                    label(for='confirmPassword') Повтори парола
+                    input#confirmPassword.form-control(name='confirmPassword', placeholder='', type='password', required='')
                     br
                     button.btn.btn-lg.btn-primary.btn-block(type='submit')
-                        | Sign up
+                        | Регистрирай
 
 

@@ -1,16 +1,16 @@
 var Comment = require('mongoose').model('Comment'),
     paginate = require('express-paginate'),
     viewModels = require('../view-models'),
-    helpers = require('../utilities/help-functions');
+    helpers = require('../utilities/help-functions'),
+    security = require('../utilities/security');
 
 module.exports = {
     postCreateComment: function (req, res, next) {
         var topicName = req.params.name;
-        console.log('Topic name: ' + topicName);
         var name = helpers.replaceAll(topicName, '%20', ' ');
 
         var comment = {
-            content: req.body.content,
+            content: security.handleHtmlTags(req.body.content),
             topic: name,
             createdBy: {
                 username: req.user.username,
@@ -25,7 +25,7 @@ module.exports = {
             }
 
             req.session.error = 'Success: Успешно добавихте коментар';
-            res.redirect('/forum/topic/');
+            res.redirect('/forum');
         });
     },
     getAllComments: function (req, res, next) {

@@ -11,17 +11,15 @@ block main-content
             #register-user-container.col-xs-12.col-sm-12.col-md-6.col-md-offset-3.well.well-lg
 
                 legend
-                    h1 Login
+                    h1 Вход
 
                 form.form(role='form', name='newUserForm', method='POST', action='/login' novalidate )
                     .row
 
                     br
-                    label(for='username') Username
-                    input#username.form-control(name='username', placeholder='Username', type='text', required='')
+                    input#username.form-control(name='username', placeholder='Потребителско име', type='text', required='')
                     br
-                    label(for='password') Password
-                    input#password.form-control(name='password', placeholder='Password', type='password', required='')
+                    input#password.form-control(name='password', placeholder='Парола', type='password', required='')
                     br
                     button.btn.btn-lg.btn-primary.btn-block(type="submit" value="Login")
-                        | Login
+                        | Вход
