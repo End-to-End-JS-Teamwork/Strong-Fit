@@ -51,6 +51,14 @@ userSchema.method({
     },
     isInRole: function (role) {
         return this.roles.indexOf(role) > -1
+    },
+    update: function(newProps){
+        for(var prop in newProps){
+            this[`${prop}`] = newProps[`${prop}`];
+        }
+
+        this.save();
+        return this;
     }
 });
 

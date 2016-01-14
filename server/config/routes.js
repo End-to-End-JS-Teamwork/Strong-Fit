@@ -6,7 +6,6 @@ var auth = require('./auth'),
 
 module.exports = function (app) {
     function currentUserMiddleware(req, res, next){
-        console.log(req.user);
         req.currentUser = req.user;
         next();
     }
@@ -22,6 +21,8 @@ module.exports = function (app) {
     app.post('/login', auth.login);
     app.get('/logout', auth.isAuthenticated, auth.logout);
 
+    app.get('/profile', controllers.users.getUser);
+    app.post('/profile', auth.isAuthenticated, controllers.users.updateUser);
     app.post('/delete/user', auth.isAuthenticated, controllers.users.deleteUser);
 
     // Favicon
@@ -48,7 +49,7 @@ module.exports = function (app) {
 
     // Default
     app.get('/', function (req, res) {
-        res.render('index');
+        res.render('index', {currentUser: req.user});
     });
 
     // Errors

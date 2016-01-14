@@ -3,7 +3,6 @@
 var passport = require('passport'),
     socket = require('./socket'),
     viewModels = require('../view-models');
-// notifirer = require('../utilities/notifier');
 
 module.exports = {
     login: function (req, res, next) {
