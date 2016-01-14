@@ -10,6 +10,7 @@ module.exports = {
     },
     postCreateArticle: function (req, res, next) {
         var article = {
+            id: req.body._id,
             title: req.body.title,
             description: req.body.description,
             createdBy: 'Anton Hristov',
@@ -82,7 +83,7 @@ module.exports = {
     },
     getArticle: function (req, res) {
         console.log(decodeURIComponent(req.params.articleName));
-        Article.findOne({_id: req.params.id}, function (err, article) {
+        Article.findOne({title: req.params.title}, function (err, article) {
             if (err) {
                 console.log(err);
             }

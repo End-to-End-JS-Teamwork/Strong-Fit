@@ -1,3 +1,36 @@
 extends includes/layout
 block main-content
-    h1 Home page here
+    .row.center-block
+        .col-lg-4.col-lg-offset-1
+            a(href="/forum/articles/#{firstArticle.title}")
+                .tab-content
+                    .row.center-block
+                        img(src="#{firstArticle.imageUrl}", alt='article')
+                    .row.center-block
+                        h4
+                            = firstArticle.title
+        .col-lg-4.col-lg-offset-1
+            a(href="/forum/articles/#{secondArticle.title}")
+                .tab-content
+                    .row.center-block
+                        img(src="#{secondArticle.imageUrl}", alt='article')
+                    .row
+                        h4
+                            = secondArticle.title
+    .row.center-block
+        .col-lg-4.col-lg-offset-1
+            a(href="/forum/articles/#{thirdArticle.title}")
+                .tab-content
+                    .row.center-block
+                        img(src="#{thirdArticle.imageUrl}", alt='article')
+                    .row
+                        h4
+                            = thirdArticle.title
+        .col-lg-4.col-lg-offset-1
+            a(href="/forum/articles/#{forthArticle.title}")
+                .tab-content
+                    .row.center-block
+                        img(src="#{forthArticle.imageUrl}", alt='article')
+                    .row
+                        h4
+                            = forthArticle.title
