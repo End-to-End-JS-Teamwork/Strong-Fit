@@ -1,36 +1,36 @@
 extends includes/layout
 block main-content
     .row.center-block
-        .col-lg-4.col-lg-offset-1
+        .col-lg-4.col-lg-offset-1(style="margin-left: 180px;")
             a(href="/forum/articles/#{firstArticle.title}")
                 .tab-content
                     .row.center-block
-                        img(src="#{firstArticle.imageUrl}", alt='article')
+                        img.homePageImg(src="#{firstArticle.imageUrl}", alt='article')
                     .row.center-block
-                        h4
+                        h4.titleArticle
                             = firstArticle.title
         .col-lg-4.col-lg-offset-1
             a(href="/forum/articles/#{secondArticle.title}")
                 .tab-content
                     .row.center-block
-                        img(src="#{secondArticle.imageUrl}", alt='article')
+                        img.homePageImg(src="#{secondArticle.imageUrl}", alt='article')
                     .row
-                        h4
+                        h4.titleArticle
                             = secondArticle.title
     .row.center-block
-        .col-lg-4.col-lg-offset-1
+        .col-lg-4.col-lg-offset-1(style="margin-left: 180px;")
             a(href="/forum/articles/#{thirdArticle.title}")
                 .tab-content
                     .row.center-block
-                        img(src="#{thirdArticle.imageUrl}", alt='article')
+                        img.homePageImg(src="#{thirdArticle.imageUrl}", alt='article')
                     .row
-                        h4
+                        h4.titleArticle
                             = thirdArticle.title
         .col-lg-4.col-lg-offset-1
             a(href="/forum/articles/#{forthArticle.title}")
                 .tab-content
                     .row.center-block
-                        img(src="#{forthArticle.imageUrl}", alt='article')
+                        img.homePageImg(src="#{forthArticle.imageUrl}", alt='article')
                     .row
-                        h4
+                        h4.titleArticle
                             = forthArticle.title

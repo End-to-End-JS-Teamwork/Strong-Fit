@@ -12,7 +12,7 @@ module.exports = {
                 var firstDate = new Date(firstArticle.createdOn),
                     secondDate = new Date(secondArticle.createdOn);
 
-                return firstDate - secondDate;
+                return secondDate - firstDate;
             });
 
             var newestArticles = [];

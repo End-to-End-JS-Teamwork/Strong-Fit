@@ -7,7 +7,7 @@ block main-content
                     h1 #{article.title}
                     strong Създадена от: #{article.createdBy}, #{article.createdOn}
                 section
-                    img(src="#{article.imageUrl}" class="img-rounded")
+                    img.openedArticleImage(src="#{article.imageUrl}" class="img-rounded")
                     p #{article.description}
             
             

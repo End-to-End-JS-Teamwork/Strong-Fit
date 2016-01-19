@@ -350,3 +350,19 @@ a.btn.btn-primary {
     height: 150px;
     margin-top: -50px;
 }
+
+.homePageImg {
+    width: 250px;
+    height: 180px;
+    border: 2px solid orange;
+    margin-left: 50px;
+}
+
+.openedArticleImage {
+    width: 350px;
+    height: 250px;
+}
+
+.titleArticle {
+    margin-left: 45px;
+}
